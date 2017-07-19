@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="906f97e74c2e425db66e902c12a1200a" Name="Diagram1">
+        <EntityTypeShape EntityType="B2BTrackingSystemModel.TRACKING_SYSTEM_HEADS" Width="2.75" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="B2BTrackingSystemModel.TRACKING_SYSTEM_LINES" Width="2.5" PointX="4.875" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="B2BTrackingSystemModel.TRACKING_SYSTEM_HEADSTRACKING_SYSTEM_LINES" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

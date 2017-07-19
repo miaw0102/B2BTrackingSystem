@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="B2BTrackingSystemModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TRACKING_SYSTEM_HEADS">
+          <Key>
+            <PropertyRef Name="TRACKING_NUM" />
+          </Key>
+          <Property Name="TRACKING_NUM" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="TRACKING_TYPE" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="CUSTOMER_TYPE" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="REQUESTER" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="REQUEST_DATE" Type="date" Nullable="false" />
+          <Property Name="PRIORITY_LEVEL" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="DEADLINE" Type="date" Nullable="false" />
+          <Property Name="TRACKING_CONTENT" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="ASSIGN_PEOPLE" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="CASE_STATE" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="CLOSING_DATE" Type="date" />
+          <Property Name="ISDELETED" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRACKING_SYSTEM_LINES">
+          <Key>
+            <PropertyRef Name="TRACKING_LINE_NUM" />
+          </Key>
+          <Property Name="HEADER_TRACKING_NUM" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="PROCESSING_DATE" Type="date" Nullable="false" />
+          <Property Name="IMPLEMENTATION_STATUS" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="CUSTOMER_REPLY" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="ASSIGN_PEOPLE" Type="date" Nullable="false" />
+          <Property Name="TRACKING_LINE_NUM" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="ISDELETED" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="B2BTrackingSystemModelStoreContainer">
+          <EntitySet Name="TRACKING_SYSTEM_HEADS" EntityType="Self.TRACKING_SYSTEM_HEADS" Schema="B2B" store:Type="Tables" />
+          <EntitySet Name="TRACKING_SYSTEM_LINES" EntityType="Self.TRACKING_SYSTEM_LINES" Schema="B2B" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="B2BTrackingSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TRACKING_SYSTEM_HEADS">
+          <Key>
+            <PropertyRef Name="TRACKING_NUM" />
+          </Key>
+          <Property Name="TRACKING_NUM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TRACKING_TYPE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUSTOMER_TYPE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REQUESTER" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REQUEST_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="PRIORITY_LEVEL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DEADLINE" Type="DateTime" Nullable="false" />
+          <Property Name="TRACKING_CONTENT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ASSIGN_PEOPLE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CASE_STATE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLOSING_DATE" Type="DateTime" />
+          <Property Name="ISDELETED" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TRACKING_SYSTEM_LINES" Relationship="B2BTrackingSystemModel.TRACKING_SYSTEM_HEADSTRACKING_SYSTEM_LINES" FromRole="TRACKING_SYSTEM_HEADS" ToRole="TRACKING_SYSTEM_LINES" />
+        </EntityType>
+        <EntityType Name="TRACKING_SYSTEM_LINES">
+          <Key>
+            <PropertyRef Name="TRACKING_LINE_NUM" />
+          </Key>
+          <Property Name="HEADER_TRACKING_NUM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROCESSING_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="IMPLEMENTATION_STATUS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUSTOMER_REPLY" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ASSIGN_PEOPLE" Type="DateTime" Nullable="false" />
+          <Property Name="TRACKING_LINE_NUM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ISDELETED" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TRACKING_SYSTEM_HEADS" Relationship="B2BTrackingSystemModel.TRACKING_SYSTEM_HEADSTRACKING_SYSTEM_LINES" FromRole="TRACKING_SYSTEM_LINES" ToRole="TRACKING_SYSTEM_HEADS" />
+        </EntityType>
+        <EntityContainer Name="B2BTrackingSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TRACKING_SYSTEM_HEADS" EntityType="Self.TRACKING_SYSTEM_HEADS" />
+          <EntitySet Name="TRACKING_SYSTEM_LINES" EntityType="Self.TRACKING_SYSTEM_LINES" />
+          <AssociationSet Name="TRACKING_SYSTEM_HEADSTRACKING_SYSTEM_LINES" Association="B2BTrackingSystemModel.TRACKING_SYSTEM_HEADSTRACKING_SYSTEM_LINES">
+            <End Role="TRACKING_SYSTEM_HEADS" EntitySet="TRACKING_SYSTEM_HEADS" />
+            <End Role="TRACKING_SYSTEM_LINES" EntitySet="TRACKING_SYSTEM_LINES" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="TRACKING_SYSTEM_HEADSTRACKING_SYSTEM_LINES">
+          <End Type="B2BTrackingSystemModel.TRACKING_SYSTEM_HEADS" Role="TRACKING_SYSTEM_HEADS" Multiplicity="1" />
+          <End Type="B2BTrackingSystemModel.TRACKING_SYSTEM_LINES" Role="TRACKING_SYSTEM_LINES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRACKING_SYSTEM_HEADS">
+              <PropertyRef Name="TRACKING_NUM" />
+            </Principal>
+            <Dependent Role="TRACKING_SYSTEM_LINES">
+              <PropertyRef Name="HEADER_TRACKING_NUM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="B2BTrackingSystemModelStoreContainer" CdmEntityContainer="B2BTrackingSystemEntities">
+          <EntitySetMapping Name="TRACKING_SYSTEM_HEADS">
+            <EntityTypeMapping TypeName="B2BTrackingSystemModel.TRACKING_SYSTEM_HEADS">
+              <MappingFragment StoreEntitySet="TRACKING_SYSTEM_HEADS">
+                <ScalarProperty Name="TRACKING_NUM" ColumnName="TRACKING_NUM" />
+                <ScalarProperty Name="TRACKING_TYPE" ColumnName="TRACKING_TYPE" />
+                <ScalarProperty Name="CUSTOMER_TYPE" ColumnName="CUSTOMER_TYPE" />
+                <ScalarProperty Name="REQUESTER" ColumnName="REQUESTER" />
+                <ScalarProperty Name="REQUEST_DATE" ColumnName="REQUEST_DATE" />
+                <ScalarProperty Name="PRIORITY_LEVEL" ColumnName="PRIORITY_LEVEL" />
+                <ScalarProperty Name="DEADLINE" ColumnName="DEADLINE" />
+                <ScalarProperty Name="TRACKING_CONTENT" ColumnName="TRACKING_CONTENT" />
+                <ScalarProperty Name="ASSIGN_PEOPLE" ColumnName="ASSIGN_PEOPLE" />
+                <ScalarProperty Name="CASE_STATE" ColumnName="CASE_STATE" />
+                <ScalarProperty Name="CLOSING_DATE" ColumnName="CLOSING_DATE" />
+                <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRACKING_SYSTEM_LINES">
+            <EntityTypeMapping TypeName="B2BTrackingSystemModel.TRACKING_SYSTEM_LINES">
+              <MappingFragment StoreEntitySet="TRACKING_SYSTEM_LINES">
+                <ScalarProperty Name="HEADER_TRACKING_NUM" ColumnName="HEADER_TRACKING_NUM" />
+                <ScalarProperty Name="PROCESSING_DATE" ColumnName="PROCESSING_DATE" />
+                <ScalarProperty Name="IMPLEMENTATION_STATUS" ColumnName="IMPLEMENTATION_STATUS" />
+                <ScalarProperty Name="CUSTOMER_REPLY" ColumnName="CUSTOMER_REPLY" />
+                <ScalarProperty Name="ASSIGN_PEOPLE" ColumnName="ASSIGN_PEOPLE" />
+                <ScalarProperty Name="TRACKING_LINE_NUM" ColumnName="TRACKING_LINE_NUM" />
+                <ScalarProperty Name="ISDELETED" ColumnName="ISDELETED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
