@@ -16,7 +16,8 @@ namespace B2BTrackingSystem.Models
         [Required]
         public string HEADER_TRACKING_NUM { get; set; }
         [Required]
-        public System.DateTime PROCESSING_DATE { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime PROCESSING_DATE { get; set; }
        
         [StringLength(200, ErrorMessage="欄位長度不得大於 200 個字元")]
         [Required]

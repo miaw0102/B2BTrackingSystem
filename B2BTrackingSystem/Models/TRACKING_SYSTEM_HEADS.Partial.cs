@@ -30,6 +30,7 @@ namespace B2BTrackingSystem.Models
         [Required]
         public string REQUESTER { get; set; }
         [Required]
+        [DataType(DataType.Date)]
         public System.DateTime REQUEST_DATE { get; set; }
         
         [StringLength(10, ErrorMessage="欄位長度不得大於 10 個字元")]
@@ -37,7 +38,7 @@ namespace B2BTrackingSystem.Models
         [UIHint("優先等級分類")]
         public string PRIORITY_LEVEL { get; set; }
         [Required]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
+        [DataType(DataType.Date)]
         public System.DateTime DEADLINE { get; set; }
         
         [StringLength(200, ErrorMessage="欄位長度不得大於 200 個字元")]
@@ -53,6 +54,8 @@ namespace B2BTrackingSystem.Models
         [Required]
         [UIHint("案件狀態分類")]
         public string CASE_STATE { get; set; }
+
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> CLOSING_DATE { get; set; }
         [Required]
         public decimal ISDELETED { get; set; }
