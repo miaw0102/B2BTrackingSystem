@@ -16,9 +16,8 @@ namespace B2BTrackingSystem.Models
     {
         public string HEADER_TRACKING_NUM { get; set; }
         public System.DateTime PROCESSING_DATE { get; set; }
-        public string IMPLEMENTATION_STATUS { get; set; }
         public string CUSTOMER_REPLY { get; set; }
-        public System.DateTime ASSIGN_PEOPLE { get; set; }
+        public string ASSIGN_PEOPLE { get; set; }
         public string TRACKING_LINE_NUM { get; set; }
         public decimal ISDELETED { get; set; }
     

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<B2BTrackingSystem.Models.TRACKING_SYSTEM_LINES>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>追蹤單明細</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>追蹤單號碼</th>
+        <th>追蹤單明細號碼</th>
+        <th>處理日期</th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IMPLEMENTATION_STATUS)
+        </th>*@
+        <th>客戶回覆</th>
+        <th>指派人員</th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ISDELETED)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HEADER_TRACKING_NUM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRACKING_LINE_NUM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROCESSING_DATE)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IMPLEMENTATION_STATUS)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.CUSTOMER_REPLY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASSIGN_PEOPLE)
+        </td>
+        @*<td>
+                @Html.DisplayFor(modelItem => item.ISDELETED)
+            </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.TRACKING_LINE_NUM }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TRACKING_LINE_NUM }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TRACKING_LINE_NUM })
+        </td>
+    </tr>
+}
+
+</table>

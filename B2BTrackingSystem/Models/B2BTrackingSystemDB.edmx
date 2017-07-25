@@ -28,9 +28,8 @@
           </Key>
           <Property Name="HEADER_TRACKING_NUM" Type="varchar2" MaxLength="20" Nullable="false" />
           <Property Name="PROCESSING_DATE" Type="date" Nullable="false" />
-          <Property Name="IMPLEMENTATION_STATUS" Type="varchar2" MaxLength="200" Nullable="false" />
           <Property Name="CUSTOMER_REPLY" Type="varchar2" MaxLength="200" Nullable="false" />
-          <Property Name="ASSIGN_PEOPLE" Type="date" Nullable="false" />
+          <Property Name="ASSIGN_PEOPLE" Type="varchar2" MaxLength="30" Nullable="false" />
           <Property Name="TRACKING_LINE_NUM" Type="varchar2" MaxLength="20" Nullable="false" />
           <Property Name="ISDELETED" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
@@ -66,14 +65,13 @@
           </Key>
           <Property Name="HEADER_TRACKING_NUM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PROCESSING_DATE" Type="DateTime" Nullable="false" />
-          <Property Name="IMPLEMENTATION_STATUS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CUSTOMER_REPLY" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ASSIGN_PEOPLE" Type="DateTime" Nullable="false" />
+          <Property Name="ASSIGN_PEOPLE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TRACKING_LINE_NUM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ISDELETED" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="TRACKING_SYSTEM_HEADS" Relationship="B2BTrackingSystemModel.TRACKING_SYSTEM_HEADSTRACKING_SYSTEM_LINES" FromRole="TRACKING_SYSTEM_LINES" ToRole="TRACKING_SYSTEM_HEADS" />
         </EntityType>
-        <EntityContainer Name="B2BTrackingSystemV1Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="B2BTrackingSystemEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TRACKING_SYSTEM_HEADS" EntityType="Self.TRACKING_SYSTEM_HEADS" />
           <EntitySet Name="TRACKING_SYSTEM_LINES" EntityType="Self.TRACKING_SYSTEM_LINES" />
           <AssociationSet Name="TRACKING_SYSTEM_HEADSTRACKING_SYSTEM_LINES" Association="B2BTrackingSystemModel.TRACKING_SYSTEM_HEADSTRACKING_SYSTEM_LINES">
@@ -98,7 +96,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="B2BTrackingSystemModelStoreContainer" CdmEntityContainer="B2BTrackingSystemV1Entities">
+        <EntityContainerMapping StorageEntityContainer="B2BTrackingSystemModelStoreContainer" CdmEntityContainer="B2BTrackingSystemEntities">
           <EntitySetMapping Name="TRACKING_SYSTEM_HEADS">
             <EntityTypeMapping TypeName="B2BTrackingSystemModel.TRACKING_SYSTEM_HEADS">
               <MappingFragment StoreEntitySet="TRACKING_SYSTEM_HEADS">
@@ -122,7 +120,6 @@
               <MappingFragment StoreEntitySet="TRACKING_SYSTEM_LINES">
                 <ScalarProperty Name="HEADER_TRACKING_NUM" ColumnName="HEADER_TRACKING_NUM" />
                 <ScalarProperty Name="PROCESSING_DATE" ColumnName="PROCESSING_DATE" />
-                <ScalarProperty Name="IMPLEMENTATION_STATUS" ColumnName="IMPLEMENTATION_STATUS" />
                 <ScalarProperty Name="CUSTOMER_REPLY" ColumnName="CUSTOMER_REPLY" />
                 <ScalarProperty Name="ASSIGN_PEOPLE" ColumnName="ASSIGN_PEOPLE" />
                 <ScalarProperty Name="TRACKING_LINE_NUM" ColumnName="TRACKING_LINE_NUM" />

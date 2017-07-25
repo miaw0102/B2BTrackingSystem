@@ -1,0 +1,50 @@
+﻿@model B2BTrackingSystem.Models.TRACKING_SYSTEM_LINES
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TRACKING_SYSTEM_LINES</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PROCESSING_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROCESSING_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CUSTOMER_REPLY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CUSTOMER_REPLY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ASSIGN_PEOPLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ASSIGN_PEOPLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TRACKING_SYSTEM_HEADS.TRACKING_TYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRACKING_SYSTEM_HEADS.TRACKING_TYPE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TRACKING_LINE_NUM }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -13,10 +13,10 @@ namespace B2BTrackingSystem.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class B2BTrackingSystemV1Entities : DbContext
+    public partial class B2BTrackingSystemEntities : DbContext
     {
-        public B2BTrackingSystemV1Entities()
-            : base("name=B2BTrackingSystemV1Entities")
+        public B2BTrackingSystemEntities()
+            : base("name=B2BTrackingSystemEntities")
         {
         }
     

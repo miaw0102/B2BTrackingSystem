@@ -208,6 +208,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TRACKING_SYSTEM_HEADSController.cs" />
+    <Compile Include="Controllers\TRACKING_SYSTEM_LINESController.cs" />
+    <Compile Include="Controllers\優先等級分類的SelectList物件Attribute.cs" />
+    <Compile Include="Controllers\宣告客戶分類的SelectList物件Attribute.cs" />
+    <Compile Include="Controllers\宣告指派人員分類的SelectList物件Attribute.cs" />
+    <Compile Include="Controllers\宣告案件狀態分類的SelectList物件Attribute.cs" />
+    <Compile Include="Controllers\宣告追蹤單分類的SelectList物件Attribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -328,6 +335,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\TRACKING_SYSTEM_HEADS\Create.cshtml" />
+    <Content Include="Views\TRACKING_SYSTEM_HEADS\Delete.cshtml" />
+    <Content Include="Views\TRACKING_SYSTEM_HEADS\Details.cshtml" />
+    <Content Include="Views\TRACKING_SYSTEM_HEADS\Edit.cshtml" />
+    <Content Include="Views\TRACKING_SYSTEM_HEADS\Index.cshtml" />
+    <Content Include="Views\TRACKING_SYSTEM_LINES\Create.cshtml" />
+    <Content Include="Views\TRACKING_SYSTEM_LINES\Delete.cshtml" />
+    <Content Include="Views\TRACKING_SYSTEM_LINES\Details.cshtml" />
+    <Content Include="Views\TRACKING_SYSTEM_LINES\Edit.cshtml" />
+    <Content Include="Views\TRACKING_SYSTEM_LINES\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\追蹤單分類.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\客戶分類.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\優先等級分類.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\案件狀態分類.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\指派人員分類.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -361,7 +383,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51498</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51498/</IISUrl>
+          <IISUrl>http://localhost:20032/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

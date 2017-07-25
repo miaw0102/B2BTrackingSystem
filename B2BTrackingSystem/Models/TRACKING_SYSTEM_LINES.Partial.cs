@@ -17,16 +17,13 @@ namespace B2BTrackingSystem.Models
         public string HEADER_TRACKING_NUM { get; set; }
         [Required]
         public System.DateTime PROCESSING_DATE { get; set; }
-        
-        [StringLength(200, ErrorMessage="欄位長度不得大於 200 個字元")]
-        [Required]
-        public string IMPLEMENTATION_STATUS { get; set; }
-        
+       
         [StringLength(200, ErrorMessage="欄位長度不得大於 200 個字元")]
         [Required]
         public string CUSTOMER_REPLY { get; set; }
         [Required]
-        public System.DateTime ASSIGN_PEOPLE { get; set; }
+        [UIHint("指派人員分類")]
+        public string ASSIGN_PEOPLE { get; set; }
         
         [StringLength(20, ErrorMessage="欄位長度不得大於 20 個字元")]
         [Required]

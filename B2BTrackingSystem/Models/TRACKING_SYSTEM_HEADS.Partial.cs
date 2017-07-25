@@ -18,10 +18,12 @@ namespace B2BTrackingSystem.Models
         
         [StringLength(15, ErrorMessage="欄位長度不得大於 15 個字元")]
         [Required]
+        [UIHint("追蹤單分類")]
         public string TRACKING_TYPE { get; set; }
         
         [StringLength(15, ErrorMessage="欄位長度不得大於 15 個字元")]
         [Required]
+        [UIHint("客戶分類")]
         public string CUSTOMER_TYPE { get; set; }
         
         [StringLength(30, ErrorMessage="欄位長度不得大於 30 個字元")]
@@ -32,8 +34,10 @@ namespace B2BTrackingSystem.Models
         
         [StringLength(10, ErrorMessage="欄位長度不得大於 10 個字元")]
         [Required]
+        [UIHint("優先等級分類")]
         public string PRIORITY_LEVEL { get; set; }
         [Required]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         public System.DateTime DEADLINE { get; set; }
         
         [StringLength(200, ErrorMessage="欄位長度不得大於 200 個字元")]
@@ -42,10 +46,12 @@ namespace B2BTrackingSystem.Models
         
         [StringLength(30, ErrorMessage="欄位長度不得大於 30 個字元")]
         [Required]
+        [UIHint("指派人員分類")]
         public string ASSIGN_PEOPLE { get; set; }
         
         [StringLength(20, ErrorMessage="欄位長度不得大於 20 個字元")]
         [Required]
+        [UIHint("案件狀態分類")]
         public string CASE_STATE { get; set; }
         public Nullable<System.DateTime> CLOSING_DATE { get; set; }
         [Required]
