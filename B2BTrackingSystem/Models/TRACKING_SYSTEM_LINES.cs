@@ -14,11 +14,11 @@ namespace B2BTrackingSystem.Models
     
     public partial class TRACKING_SYSTEM_LINES
     {
-        public string HEADER_TRACKING_NUM { get; set; }
+        public decimal HEADER_TRACKING_NUM { get; set; }
         public System.DateTime PROCESSING_DATE { get; set; }
         public string CUSTOMER_REPLY { get; set; }
         public string ASSIGN_PEOPLE { get; set; }
-        public string TRACKING_LINE_NUM { get; set; }
+        public decimal TRACKING_LINE_NUM { get; set; }
         public decimal ISDELETED { get; set; }
     
         public virtual TRACKING_SYSTEM_HEADS TRACKING_SYSTEM_HEADS { get; set; }

@@ -8,34 +8,37 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4><h2>追蹤單明細</h2></h4>
+    <h4>TRACKING_SYSTEM_LINES</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PROCESSING_DATE)
-        </dt>
+        <dt>處理日期</dt>
 
         <dd>
             @Html.DisplayFor(model => model.PROCESSING_DATE)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CUSTOMER_REPLY)
-        </dt>
+            客戶回覆</dt>
 
         <dd>
             @Html.DisplayFor(model => model.CUSTOMER_REPLY)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ASSIGN_PEOPLE)
-        </dt>
+        <dt>指派人員</dt>
 
         <dd>
             @Html.DisplayFor(model => model.ASSIGN_PEOPLE)
         </dd>
 
         @*<dt>
+            @Html.DisplayNameFor(model => model.ISDELETED)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISDELETED)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.TRACKING_SYSTEM_HEADS.TRACKING_TYPE)
         </dt>
 

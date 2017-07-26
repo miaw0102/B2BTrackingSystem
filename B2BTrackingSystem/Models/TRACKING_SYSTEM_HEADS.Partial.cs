@@ -11,10 +11,8 @@ namespace B2BTrackingSystem.Models
     
     public partial class TRACKING_SYSTEM_HEADSMetaData
     {
-        
-        [StringLength(20, ErrorMessage="欄位長度不得大於 20 個字元")]
         [Required]
-        public string TRACKING_NUM { get; set; }
+        public decimal TRACKING_NUM { get; set; }
         
         [StringLength(15, ErrorMessage="欄位長度不得大於 15 個字元")]
         [Required]
@@ -31,6 +29,7 @@ namespace B2BTrackingSystem.Models
         public string REQUESTER { get; set; }
         [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime REQUEST_DATE { get; set; }
         
         [StringLength(10, ErrorMessage="欄位長度不得大於 10 個字元")]
@@ -39,6 +38,7 @@ namespace B2BTrackingSystem.Models
         public string PRIORITY_LEVEL { get; set; }
         [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime DEADLINE { get; set; }
         
         [StringLength(200, ErrorMessage="欄位長度不得大於 200 個字元")]
@@ -54,8 +54,8 @@ namespace B2BTrackingSystem.Models
         [Required]
         [UIHint("案件狀態分類")]
         public string CASE_STATE { get; set; }
-
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> CLOSING_DATE { get; set; }
         [Required]
         public decimal ISDELETED { get; set; }

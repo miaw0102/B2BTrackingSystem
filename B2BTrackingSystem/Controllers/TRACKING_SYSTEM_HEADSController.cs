@@ -21,7 +21,7 @@ namespace B2BTrackingSystem.Controllers
         }
 
         // GET: TRACKING_SYSTEM_HEADS/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(decimal id)
         {
             if (id == null)
             {
@@ -56,10 +56,15 @@ namespace B2BTrackingSystem.Controllers
         [優先等級分類的SelectList物件]
         [宣告案件狀態分類的SelectList物件]
         [宣告指派人員分類的SelectList物件]
-        public ActionResult Create([Bind(Include = "TRACKING_NUM,TRACKING_TYPE,CUSTOMER_TYPE,REQUESTER,REQUEST_DATE,PRIORITY_LEVEL,DEADLINE,TRACKING_CONTENT,ASSIGN_PEOPLE,CASE_STATE,CLOSING_DATE,ISDELETED")] TRACKING_SYSTEM_HEADS tRACKING_SYSTEM_HEADS)
+        public ActionResult Create([Bind(Include = "TRACKING_TYPE,CUSTOMER_TYPE,REQUESTER,REQUEST_DATE,PRIORITY_LEVEL,DEADLINE,TRACKING_CONTENT,ASSIGN_PEOPLE,CASE_STATE,CLOSING_DATE,ISDELETED")] TRACKING_SYSTEM_HEADS tRACKING_SYSTEM_HEADS)
         {
             if (ModelState.IsValid)
             {
+                string query = "select B2B.TRACKING_SYSTEM_HEADS_S.NEXTVAL from DUAL";
+                var query_result = db.Database.SqlQuery<decimal>(query);
+                decimal mission_id = query_result.First();
+                tRACKING_SYSTEM_HEADS.TRACKING_NUM = (decimal)mission_id;
+
                 db.TRACKING_SYSTEM_HEADS.Add(tRACKING_SYSTEM_HEADS);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -68,14 +73,13 @@ namespace B2BTrackingSystem.Controllers
             return View(tRACKING_SYSTEM_HEADS);
         }
 
-
         // GET: TRACKING_SYSTEM_HEADS/Edit/5
         [宣告追蹤單分類的SelectList物件]
         [宣告客戶分類的SelectList物件]
         [優先等級分類的SelectList物件]
         [宣告案件狀態分類的SelectList物件]
         [宣告指派人員分類的SelectList物件]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(decimal id)
         {
             if (id == null)
             {
@@ -111,7 +115,7 @@ namespace B2BTrackingSystem.Controllers
         }
 
         // GET: TRACKING_SYSTEM_HEADS/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(decimal id)
         {
             if (id == null)
             {
@@ -128,7 +132,7 @@ namespace B2BTrackingSystem.Controllers
         // POST: TRACKING_SYSTEM_HEADS/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(decimal id)
         {
             TRACKING_SYSTEM_HEADS tRACKING_SYSTEM_HEADS = db.TRACKING_SYSTEM_HEADS.Find(id);
             db.TRACKING_SYSTEM_HEADS.Remove(tRACKING_SYSTEM_HEADS);

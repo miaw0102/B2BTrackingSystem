@@ -11,24 +11,23 @@ namespace B2BTrackingSystem.Models
     
     public partial class TRACKING_SYSTEM_LINESMetaData
     {
-        
-        [StringLength(20, ErrorMessage="欄位長度不得大於 20 個字元")]
         [Required]
-        public string HEADER_TRACKING_NUM { get; set; }
+        public decimal HEADER_TRACKING_NUM { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        public DateTime PROCESSING_DATE { get; set; }
-       
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public System.DateTime PROCESSING_DATE { get; set; }
+        
         [StringLength(200, ErrorMessage="欄位長度不得大於 200 個字元")]
         [Required]
         public string CUSTOMER_REPLY { get; set; }
+        
+        [StringLength(30, ErrorMessage="欄位長度不得大於 30 個字元")]
         [Required]
         [UIHint("指派人員分類")]
         public string ASSIGN_PEOPLE { get; set; }
-        
-        [StringLength(20, ErrorMessage="欄位長度不得大於 20 個字元")]
         [Required]
-        public string TRACKING_LINE_NUM { get; set; }
+        public decimal TRACKING_LINE_NUM { get; set; }
         [Required]
         public decimal ISDELETED { get; set; }
     

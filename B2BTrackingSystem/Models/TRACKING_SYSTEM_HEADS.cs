@@ -20,7 +20,7 @@ namespace B2BTrackingSystem.Models
             this.TRACKING_SYSTEM_LINES = new HashSet<TRACKING_SYSTEM_LINES>();
         }
     
-        public string TRACKING_NUM { get; set; }
+        public decimal TRACKING_NUM { get; set; }
         public string TRACKING_TYPE { get; set; }
         public string CUSTOMER_TYPE { get; set; }
         public string REQUESTER { get; set; }

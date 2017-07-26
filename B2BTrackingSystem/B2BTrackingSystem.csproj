@@ -335,6 +335,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\追蹤單分類.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\客戶分類.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\優先等級分類.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\案件狀態分類.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\指派人員分類.cshtml" />
     <Content Include="Views\TRACKING_SYSTEM_HEADS\Create.cshtml" />
     <Content Include="Views\TRACKING_SYSTEM_HEADS\Delete.cshtml" />
     <Content Include="Views\TRACKING_SYSTEM_HEADS\Details.cshtml" />
@@ -345,11 +350,6 @@
     <Content Include="Views\TRACKING_SYSTEM_LINES\Details.cshtml" />
     <Content Include="Views\TRACKING_SYSTEM_LINES\Edit.cshtml" />
     <Content Include="Views\TRACKING_SYSTEM_LINES\Index.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\追蹤單分類.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\客戶分類.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\優先等級分類.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\案件狀態分類.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\指派人員分類.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
