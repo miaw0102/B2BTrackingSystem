@@ -12,6 +12,7 @@ namespace B2BTrackingSystem.Models
     public partial class TRACKING_SYSTEM_HEADSMetaData
     {
         [Required]
+        [DisplayFormat(DataFormatString = "{0:n0}")]
         public decimal TRACKING_NUM { get; set; }
         
         [StringLength(15, ErrorMessage="欄位長度不得大於 15 個字元")]
