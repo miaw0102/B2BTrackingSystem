@@ -50,7 +50,7 @@ namespace B2BTrackingSystem.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [宣告指派人員分類的SelectList物件]
-        public ActionResult Create([Bind(Include = "HEADER_TRACKING_NUM,PROCESSING_DATE,CUSTOMER_REPLY,ASSIGN_PEOPLE,ISDELETED")] TRACKING_SYSTEM_LINES tRACKING_SYSTEM_LINES)
+        public ActionResult Create([Bind(Include = "TRACKING_LINE_NUM,HEADER_TRACKING_NUM,PROCESSING_DATE,CUSTOMER_REPLY,ASSIGN_PEOPLE,ISDELETED")] TRACKING_SYSTEM_LINES tRACKING_SYSTEM_LINES)
         {
             if (ModelState.IsValid)
             {

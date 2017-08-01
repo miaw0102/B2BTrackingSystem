@@ -83,11 +83,10 @@
         </dd>
 
         <dt>
-            結案日期
+            @(Model.CLOSING_DATE != null ? "結案日期" : "")      
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.CLOSING_DATE)
+            @Html.DisplayFor(model => model.CLOSING_DATE, new { htmlAttributes = new {@style = "display: none" } })
         </dd>
 
         @*<dt>
@@ -104,3 +103,4 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.TRACKING_NUM }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+

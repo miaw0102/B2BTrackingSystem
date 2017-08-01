@@ -90,9 +90,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CLOSING_DATE, "結案日期", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CLOSING_DATE, "結案日期", htmlAttributes: new { @class = "control-label col-md-2", @id = "CLOSING_DATE_Label", @style = "display: none" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CLOSING_DATE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.CLOSING_DATE, new { htmlAttributes = new { @class = "form-control", @style = "display: none" } })
                 @Html.ValidationMessageFor(model => model.CLOSING_DATE, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -119,4 +119,20 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+          $(function () {
+             $('#CASE_STATE').change(function () {
+                 var value = $(this).val();
+                 if (value == 'Close') {
+                     $('#CLOSING_DATE').show();
+                     $('#CLOSING_DATE_Label').show();
+                 } else {
+                     $('#CLOSING_DATE').hide();
+                     $('#CLOSING_DATE_Label').hide();
+                 }
+             });
+         });
+   </script>
+
 }

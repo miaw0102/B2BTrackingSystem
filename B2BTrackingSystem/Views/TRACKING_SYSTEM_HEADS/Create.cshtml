@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>TRACKING_SYSTEM_HEADS</h4>
         <hr />
@@ -88,7 +88,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CASE_STATE, "案件狀態", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CASE_STATE, "案件狀態", htmlAttributes: new { @class = "control-label col-md-2"})
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CASE_STATE, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CASE_STATE, "", new { @class = "text-danger" })
@@ -96,12 +96,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CLOSING_DATE, "結案日期", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CLOSING_DATE, new { htmlAttributes = new { @class = "form-control" } })
+             @Html.LabelFor(model => model.CLOSING_DATE, "結案日期", htmlAttributes: new { @class = "control-label col-md-2",@id= "CLOSING_DATE_Label", @style = "display: none" })
+             <div class="col-md-10">
+                @Html.EditorFor(model => model.CLOSING_DATE, new { htmlAttributes = new { @class = "form-control", @style = "display: none" } })
                 @Html.ValidationMessageFor(model => model.CLOSING_DATE, "", new { @class = "text-danger" })
-            </div>
+             </div>
         </div>
+
+
+
 
         @*<div class="form-group">
             @Html.LabelFor(model => model.ISDELETED, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -125,4 +128,19 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+    $(function () {
+       $('#CASE_STATE').change(function () {
+           var value = $(this).val();
+           if (value == 'Close') {
+               $('#CLOSING_DATE').show();
+               $('#CLOSING_DATE_Label').show();
+           } else {
+               $('#CLOSING_DATE').hide();
+               $('#CLOSING_DATE_Label').hide();
+           }
+       });
+}   );
+</script>
 }

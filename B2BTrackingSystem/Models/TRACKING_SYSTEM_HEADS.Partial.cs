@@ -12,6 +12,7 @@ namespace B2BTrackingSystem.Models
     public partial class TRACKING_SYSTEM_HEADSMetaData
     {
         [Required]
+        [DisplayFormat(DataFormatString = "{0:n0}")]
         public decimal TRACKING_NUM { get; set; }
         
         [StringLength(15, ErrorMessage="欄位長度不得大於 15 個字元")]
@@ -54,6 +55,7 @@ namespace B2BTrackingSystem.Models
         [Required]
         [UIHint("案件狀態分類")]
         public string CASE_STATE { get; set; }
+        
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> CLOSING_DATE { get; set; }
