@@ -58,6 +58,11 @@ namespace B2BTrackingSystem.Controllers
         [宣告指派人員分類的SelectList物件]
         public ActionResult Create([Bind(Include = "TRACKING_NUM,TRACKING_TYPE,CUSTOMER_TYPE,REQUESTER,REQUEST_DATE,PRIORITY_LEVEL,DEADLINE,TRACKING_CONTENT,ASSIGN_PEOPLE,CASE_STATE,CLOSING_DATE,ISDELETED")] TRACKING_SYSTEM_HEADS tRACKING_SYSTEM_HEADS)
         {
+            if (tRACKING_SYSTEM_HEADS.CASE_STATE == "Close" && tRACKING_SYSTEM_HEADS.CLOSING_DATE == null)
+            {
+                ModelState.AddModelError("CLOSING_DATE", "請輸入結案日期");
+            }
+
             if (ModelState.IsValid)
             {
                 string query = "select B2B.TRACKING_SYSTEM_HEADS_S.NEXTVAL from DUAL";
@@ -69,7 +74,7 @@ namespace B2BTrackingSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            
             return View(tRACKING_SYSTEM_HEADS);
         }
 
@@ -105,6 +110,11 @@ namespace B2BTrackingSystem.Controllers
         [宣告指派人員分類的SelectList物件]
         public ActionResult Edit([Bind(Include = "TRACKING_NUM,TRACKING_TYPE,CUSTOMER_TYPE,REQUESTER,REQUEST_DATE,PRIORITY_LEVEL,DEADLINE,TRACKING_CONTENT,ASSIGN_PEOPLE,CASE_STATE,CLOSING_DATE,ISDELETED")] TRACKING_SYSTEM_HEADS tRACKING_SYSTEM_HEADS)
         {
+            if (tRACKING_SYSTEM_HEADS.CASE_STATE == "Close" && tRACKING_SYSTEM_HEADS.CLOSING_DATE == null)
+            {
+                ModelState.AddModelError("CLOSING_DATE", "請輸入結案日期");
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(tRACKING_SYSTEM_HEADS).State = EntityState.Modified;

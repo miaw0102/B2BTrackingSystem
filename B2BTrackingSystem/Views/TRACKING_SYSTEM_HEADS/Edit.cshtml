@@ -145,9 +145,20 @@
                 } else {
                     $('#CLOSING_DATE').hide();
                     $('#CLOSING_DATE_Label').hide();
+                    $('#CLOSING_DATE').val('');
                 }
             });
         });
+
+        var value = $('#CASE_STATE').val();
+        if (value == 'Close') {
+            $('#CLOSING_DATE').show();
+            $('#CLOSING_DATE_Label').show();
+        } else {
+            $('#CLOSING_DATE').hide();
+            $('#CLOSING_DATE_Label').hide();
+            $('#CLOSING_DATE').val('');
+        }
     </script>
 
 }
