@@ -22,7 +22,7 @@ namespace B2BTrackingSystem.Controllers
             var data = all
                 .Where(d => d.ISDELETED == 0 )
                 .OrderBy(d => d.HEADER_TRACKING_NUM)
-                .ThenByDescending(d => d.TRACKING_LINE_NUM);
+                .ThenBy(d => d.TRACKING_LINE_NUM);
 
             switch (sort)
             {
@@ -35,7 +35,7 @@ namespace B2BTrackingSystem.Controllers
                     else
                     {
                         data = data.OrderBy(m => m.TRACKING_SYSTEM_HEADS.TRACKING_NUM)
-                              .ThenByDescending(m => m.TRACKING_LINE_NUM);
+                              .ThenBy(m => m.TRACKING_LINE_NUM);
                     }
                     break;
                 case "追蹤單明細號碼":
