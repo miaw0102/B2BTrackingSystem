@@ -15,16 +15,74 @@ namespace B2BTrackingSystem.Controllers
         private B2BTrackingSystemEntities db = new B2BTrackingSystemEntities();
 
         // GET: TRACKING_SYSTEM_LINES
-        public ActionResult Index()
+        public ActionResult Index(string sort, bool? desc)
         {
             var all = db.TRACKING_SYSTEM_LINES.Include(t => t.TRACKING_SYSTEM_HEADS).AsQueryable();
 
             var data = all
-                .Where(d => d.ISDELETED == 0)
+                .Where(d => d.ISDELETED == 0 )
                 .OrderBy(d => d.HEADER_TRACKING_NUM)
                 .ThenBy(d => d.TRACKING_LINE_NUM);
 
-            return View(data);
+            switch (sort)
+            {
+                case "追蹤單號碼":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.TRACKING_SYSTEM_HEADS.TRACKING_NUM)
+                              .ThenByDescending(m => m.TRACKING_LINE_NUM);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.TRACKING_SYSTEM_HEADS.TRACKING_NUM)
+                              .ThenBy(m => m.TRACKING_LINE_NUM);
+                    }
+                    break;
+                case "追蹤單明細號碼":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.TRACKING_LINE_NUM);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.TRACKING_LINE_NUM);
+                    }
+                    break;
+                case "處理日期":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.PROCESSING_DATE);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.PROCESSING_DATE);
+                    }
+                    break;
+                case "客戶回覆":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.CUSTOMER_REPLY);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.CUSTOMER_REPLY);
+                    }
+                    break;
+                case "指派人員":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.ASSIGN_PEOPLE);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.ASSIGN_PEOPLE);
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return View(data.ToList());
 
             //var tRACKING_SYSTEM_LINES = db.TRACKING_SYSTEM_LINES.Include(t => t.TRACKING_SYSTEM_HEADS);
             //return View(tRACKING_SYSTEM_LINES.ToList());
