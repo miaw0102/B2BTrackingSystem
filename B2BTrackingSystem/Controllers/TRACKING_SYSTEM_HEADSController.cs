@@ -17,7 +17,17 @@ namespace B2BTrackingSystem.Controllers
         // GET: TRACKING_SYSTEM_HEADS
         public ActionResult Index()
         {
-            return View(db.TRACKING_SYSTEM_HEADS.ToList());
+
+            var all = db.TRACKING_SYSTEM_HEADS.AsQueryable();
+
+            var data = all
+                .Where(h => h.ISDELETED == 0)
+                .OrderBy(h => h.TRACKING_NUM);
+
+            return View(data);
+
+
+            //return View(db.TRACKING_SYSTEM_HEADS.ToList());
         }
 
         // GET: TRACKING_SYSTEM_HEADS/Details/5
@@ -145,7 +155,8 @@ namespace B2BTrackingSystem.Controllers
         public ActionResult DeleteConfirmed(decimal id)
         {
             TRACKING_SYSTEM_HEADS tRACKING_SYSTEM_HEADS = db.TRACKING_SYSTEM_HEADS.Find(id);
-            db.TRACKING_SYSTEM_HEADS.Remove(tRACKING_SYSTEM_HEADS);
+            //db.TRACKING_SYSTEM_HEADS.Remove(tRACKING_SYSTEM_HEADS);
+            tRACKING_SYSTEM_HEADS.ISDELETED = 1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

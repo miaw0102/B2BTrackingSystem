@@ -11,7 +11,14 @@
 </p>
 <table class="table">
     <tr>
-        <th>單號</th>
+        <th>
+            <a href="?sort=單號">▲</a>
+            單號
+            @*@Html.DisplayNameFor(model => model.TRACKING_NUM)*@
+            <a href="?sort=單號&desc=true"> ▼</a>
+        </th>
+        
+
         <th>類 別</th>
         <th>客戶別</th>
         <th>需求者</th>

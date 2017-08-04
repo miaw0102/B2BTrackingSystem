@@ -17,8 +17,17 @@ namespace B2BTrackingSystem.Controllers
         // GET: TRACKING_SYSTEM_LINES
         public ActionResult Index()
         {
-            var tRACKING_SYSTEM_LINES = db.TRACKING_SYSTEM_LINES.Include(t => t.TRACKING_SYSTEM_HEADS);
-            return View(tRACKING_SYSTEM_LINES.ToList());
+            var all = db.TRACKING_SYSTEM_LINES.Include(t => t.TRACKING_SYSTEM_HEADS).AsQueryable();
+
+            var data = all
+                .Where(d => d.ISDELETED == 0)
+                .OrderBy(d => d.HEADER_TRACKING_NUM)
+                .ThenBy(d => d.TRACKING_LINE_NUM);
+
+            return View(data);
+
+            //var tRACKING_SYSTEM_LINES = db.TRACKING_SYSTEM_LINES.Include(t => t.TRACKING_SYSTEM_HEADS);
+            //return View(tRACKING_SYSTEM_LINES.ToList());
         }
 
         // GET: TRACKING_SYSTEM_LINES/Details/5
@@ -124,7 +133,8 @@ namespace B2BTrackingSystem.Controllers
         public ActionResult DeleteConfirmed(decimal id)
         {
             TRACKING_SYSTEM_LINES tRACKING_SYSTEM_LINES = db.TRACKING_SYSTEM_LINES.Find(id);
-            db.TRACKING_SYSTEM_LINES.Remove(tRACKING_SYSTEM_LINES);
+            //db.TRACKING_SYSTEM_LINES.Remove(tRACKING_SYSTEM_LINES);
+            tRACKING_SYSTEM_LINES.ISDELETED = 1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
