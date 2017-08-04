@@ -58,16 +58,16 @@ namespace B2BTrackingSystem.Controllers
                         data = data.OrderBy(m => m.PROCESSING_DATE);
                     }
                     break;
-                case "客戶回覆":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.CUSTOMER_REPLY);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.CUSTOMER_REPLY);
-                    }
-                    break;
+                //case "客戶回覆":
+                //    if (desc.HasValue && desc.Value)
+                //    {
+                //        data = data.OrderByDescending(m => m.CUSTOMER_REPLY);
+                //    }
+                //    else
+                //    {
+                //        data = data.OrderBy(m => m.CUSTOMER_REPLY);
+                //    }
+                //    break;
                 case "指派人員":
                     if (desc.HasValue && desc.Value)
                     {
