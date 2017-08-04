@@ -15,7 +15,7 @@ namespace B2BTrackingSystem.Controllers
         private B2BTrackingSystemEntities db = new B2BTrackingSystemEntities();
 
         // GET: TRACKING_SYSTEM_HEADS
-        public ActionResult Index()
+        public ActionResult Index(string sort,bool? desc)
         {
 
             var all = db.TRACKING_SYSTEM_HEADS.AsQueryable();
@@ -24,7 +24,113 @@ namespace B2BTrackingSystem.Controllers
                 .Where(h => h.ISDELETED == 0)
                 .OrderBy(h => h.TRACKING_NUM);
 
-            return View(data);
+            switch (sort)
+            {
+                case "單號":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.TRACKING_NUM);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.TRACKING_NUM);
+                    }
+                    break;
+                case "類 別":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.TRACKING_TYPE);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.TRACKING_TYPE);
+                    }
+                    break;
+                case "客戶別":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.CUSTOMER_TYPE);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.CUSTOMER_TYPE);
+                    }
+                    break;
+                case "需求日期":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.REQUEST_DATE);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.REQUEST_DATE);
+                    }
+                    break;
+                case "優先等級":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.PRIORITY_LEVEL);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.PRIORITY_LEVEL);
+                    }
+                    break;
+                case "期限":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.DEADLINE);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.DEADLINE);
+                    }
+                    break;
+                case "指派人員":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.ASSIGN_PEOPLE);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.ASSIGN_PEOPLE);
+                    }
+                    break;
+                case "案件狀態":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.CASE_STATE);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.CASE_STATE);
+                    }
+                    break;
+                case "結案日期":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.CLOSING_DATE);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.CLOSING_DATE);
+                    }
+                    break;
+                case "需求者":
+                    if (desc.HasValue && desc.Value)
+                    {
+                        data = data.OrderByDescending(m => m.REQUESTER);
+                    }
+                    else
+                    {
+                        data = data.OrderBy(m => m.REQUESTER);
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return View(data.ToList());
 
 
             //return View(db.TRACKING_SYSTEM_HEADS.ToList());
