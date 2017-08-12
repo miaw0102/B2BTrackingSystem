@@ -15,12 +15,41 @@ namespace B2BTrackingSystem.Controllers
         private B2BTrackingSystemEntities db = new B2BTrackingSystemEntities();
 
         // GET: TRACKING_SYSTEM_HEADS
-        public ActionResult Index(string sort,bool? desc)
+        [宣告追蹤單分類的SelectList物件]
+        [宣告客戶分類的SelectList物件]
+        [優先等級分類的SelectList物件]
+        [宣告案件狀態分類的SelectList物件]
+        [宣告指派人員分類的SelectList物件]
+        public ActionResult Index(string 追蹤單分類, string 客戶分類, string 優先等級分類, string 指派人員分類, string 案件狀態分類, string sort,bool? desc)
         {
+            var query = db.TRACKING_SYSTEM_HEADS.AsQueryable();
 
-            var all = db.TRACKING_SYSTEM_HEADS.AsQueryable();
+            if (!String.IsNullOrEmpty(追蹤單分類))
+            {
+                query = query.Where(p => p.TRACKING_TYPE.Contains(追蹤單分類));
+            }
 
-            var data = all
+            if (!String.IsNullOrEmpty(客戶分類))
+            {
+                query = query.Where(p => p.CUSTOMER_TYPE.Contains(客戶分類));
+            }
+
+            if (!String.IsNullOrEmpty(優先等級分類))
+            {
+                query = query.Where(p => p.PRIORITY_LEVEL.Contains(優先等級分類));
+            }
+
+            if (!String.IsNullOrEmpty(案件狀態分類))
+            {
+                query = query.Where(p => p.CASE_STATE.Contains(案件狀態分類));
+            }
+
+            if (!String.IsNullOrEmpty(指派人員分類))
+            {
+                query = query.Where(p => p.ASSIGN_PEOPLE.Contains(指派人員分類));
+            }
+
+            var data = query
                 .Where(h => h.ISDELETED == 0)
                 .OrderBy(h => h.TRACKING_NUM);
 
