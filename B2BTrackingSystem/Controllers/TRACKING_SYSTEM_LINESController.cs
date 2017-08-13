@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using B2BTrackingSystem.Models;
+using PagedList;
 
 namespace B2BTrackingSystem.Controllers
 {
@@ -14,9 +15,13 @@ namespace B2BTrackingSystem.Controllers
     {
         private B2BTrackingSystemEntities db = new B2BTrackingSystemEntities();
 
+        private int pageSize = 5;
+
         // GET: TRACKING_SYSTEM_LINES
-        public ActionResult Index(string sort, bool? desc)
+        public ActionResult Index(string sort, bool? desc, int page = 1)
         {
+            int currentPage = page < 1 ? 1 : page;
+
             var all = db.TRACKING_SYSTEM_LINES.Include(t => t.TRACKING_SYSTEM_HEADS).AsQueryable();
 
             var data = all
@@ -82,7 +87,9 @@ namespace B2BTrackingSystem.Controllers
                     break;
             }
 
-            return View(data.ToList());
+            var result = data.ToPagedList(currentPage, pageSize);
+
+            return View(result);
 
             //var tRACKING_SYSTEM_LINES = db.TRACKING_SYSTEM_LINES.Include(t => t.TRACKING_SYSTEM_HEADS);
             //return View(tRACKING_SYSTEM_LINES.ToList());

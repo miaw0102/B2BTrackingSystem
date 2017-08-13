@@ -1,8 +1,9 @@
-﻿@model IEnumerable<B2BTrackingSystem.Models.TRACKING_SYSTEM_LINES>
+﻿@model IPagedList<B2BTrackingSystem.Models.TRACKING_SYSTEM_LINES>
 
 @{
     ViewBag.Title = "Index";
 }
+
 
 <h2>Index</h2>
 
@@ -66,3 +67,5 @@
 }
 
 </table>
+
+@Html.PagedListPager(Model,Page => Url.Action("Index",new { Page }))

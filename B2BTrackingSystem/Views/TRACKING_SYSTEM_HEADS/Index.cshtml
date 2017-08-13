@@ -1,4 +1,5 @@
-﻿@model IEnumerable<B2BTrackingSystem.Models.TRACKING_SYSTEM_HEADS>
+﻿@*@using PagedList.Mvc*@
+@model B2BTrackingSystem.ViewModels.TrackingSystemHeadsListViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -16,13 +17,15 @@
                     <div class="col-md-6 form-group">
                         <label class="col-lg-3 control-label">類別:</label>
                         <div class="col-lg-8">
-                            @Html.DropDownList("追蹤單分類", null, "", new { @class = "form-control", @id = "TRACKING_TYPE_ID" })
+                            @*@Html.DropDownList("追蹤單分類", null, "", new { @class = "form-control", @id = "TRACKING_TYPE_ID" })*@
+                            @Html.EditorFor(x => x.SearchParameter.TRACKING_TYPE, new { htmlAttributes = new { @class = "form-control", @id = "TRACKING_TYPE_ID" } })
                         </div>
                     </div>
                     <div class="col-md-6 form-group">
                         <label class="col-lg-3 control-label">客戶別:</label>
                         <div class="col-lg-8">
-                            @Html.DropDownList("客戶分類", null, "", new { @class = "form-control", @id = "CUSTOMER_TYPE_ID" })
+                            @*@Html.DropDownList("客戶分類", null, "", new { @class = "form-control", @id = "CUSTOMER_TYPE_ID" })*@
+                            @Html.EditorFor(x => x.SearchParameter.CUSTOMER_TYPE, new { htmlAttributes = new { @class = "form-control", @id = "CUSTOMER_TYPE_ID" } })
                         </div>
                     </div>
                 </div>
@@ -30,19 +33,22 @@
                     <div class="col-md-6 form-group">
                         <label class="col-lg-3 control-label">優先等級:</label>
                         <div class="col-lg-8">
-                            @Html.DropDownList("優先等級分類", null, "", new { @class = "form-control", @id = "PRIORITY_LEVEL_ID" })
+                            @*@Html.DropDownList("優先等級分類", null, "", new { @class = "form-control", @id = "PRIORITY_LEVEL_ID" })*@
+                            @Html.EditorFor(x => x.SearchParameter.PRIORITY_LEVEL, new { htmlAttributes = new { @class = "form-control", @id = "PRIORITY_LEVEL_ID" } })
                         </div>
                     </div>
                     <div class="col-md-6 form-group">
                         <label class="col-lg-3 control-label">指派人員:</label>
                         <div class="col-lg-8">
-                            @Html.DropDownList("指派人員分類", null, "", new { @class = "form-control",@id= "ASSIGN_PEOPLE_ID" })
+                            @*@Html.DropDownList("指派人員分類", null, "", new { @class = "form-control",@id= "ASSIGN_PEOPLE_ID" })*@
+                            @Html.EditorFor(x => x.SearchParameter.ASSIGN_PEOPLE, new { htmlAttributes = new { @class = "form-control", @id = "ASSIGN_PEOPLE_ID" } })
                         </div>
                     </div>
                     <div class="col-md-6 form-group">
                         <label class="col-lg-3 control-label">案件狀態:</label>
                         <div class="col-lg-8">
-                            @Html.DropDownList("案件狀態分類", null, "", new { @class = "form-control",@id = "CASE_STATE_ID" })
+                            @*@Html.DropDownList("案件狀態分類", null, "", new { @class = "form-control",@id = "CASE_STATE_ID" })*@
+                            @Html.EditorFor(x => x.SearchParameter.CASE_STATE, new { htmlAttributes = new { @class = "form-control", @id = "CASE_STATE_ID" } })
                         </div>
                     </div>
                 </div>
@@ -51,12 +57,14 @@
                     <div class="col-md-offset-5">
                         <input type="submit" class="btn btn-primary" value="Search">
                         <span></span>
-                        <input type="button" class="btn btn-default" value="Cancel" id="Cancel" >
+                        @*<input type="reset" class="btn btn-default" value="Cancel">*@
+                        @*<input type="button" class="btn btn-default" value="Cancel" id="Cancel" >*@
                     </div>
                 </div>
             }
         </div>
 
+    @Html.PagedListPager(Model.TRACKING_SYSTEM_HEADS, page => Url.Action("Index", new { page }))
 
     <table class="table">
         <tr>
@@ -120,7 +128,7 @@
 
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.TRACKING_SYSTEM_HEADS)
         {
             <tr>
                 <td>
@@ -172,17 +180,34 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
+        //$(function () {
+        //    $('#Cancel').click(function () {
+        //        //$('#TRACKING_SYSTEM_HEADS_ID').get(0).reset();
+        //        $('#TRACKING_TYPE_ID').val('');
+        //        $('#CUSTOMER_TYPE_ID').val('');
+        //        $('#PRIORITY_LEVEL_ID').val('');
+        //        $('#ASSIGN_PEOPLE_ID').val('');
+        //        $('#CASE_STATE_ID').val('');
+        //    });
+        //});
+
         $(function () {
-            $('#Cancel').click(function () {
-                //$('#TRACKING_SYSTEM_HEADS_ID').get(0).reset();
-                $('#TRACKING_TYPE_ID').val('');
-                $('#CUSTOMER_TYPE_ID').val('');
-                $('#PRIORITY_LEVEL_ID').val('');
-                $('#ASSIGN_PEOPLE_ID').val('');
-                $('#CASE_STATE_ID').val('');
+            $('.pagination>li>a[href]').each(function (i, item) {
+                var page = $(item).attr('href').replace('/TRACKING_SYSTEM_HEADS?page=', '');
+                $(item).attr('href', '#').click(function () { postPage(page); });
+
             });
         });
 
+        function postPage(page) {
+            var targetFormId = '#TRACKING_SYSTEM_HEADS_ID';
+            if ($(targetFormId).size() > 0) {
+                $('<input>')
+                    .attr({ type: 'hidden', id: 'PageIndex', name: 'PageIndex', value: page })
+                    .appendTo($(targetFormId));
+                $(targetFormId).submit();
+            }
+        };
     </script>
 }
 
