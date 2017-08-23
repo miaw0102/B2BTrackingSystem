@@ -5,14 +5,18 @@
     ViewBag.Title = "Index";
 }
 
+
 <h2>追蹤問題列表</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "TRACKING_SYSTEM_HEADS", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "TRACKING_SYSTEM_HEADS_ID" }))
+{
+
     <div class="well">
-            @using (Html.BeginForm("Index", "TRACKING_SYSTEM_HEADS", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "TRACKING_SYSTEM_HEADS_ID" }))
-            {
+        
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label class="col-lg-3 control-label">類別:</label>
@@ -61,71 +65,52 @@
                         @*<input type="button" class="btn btn-default" value="Cancel" id="Cancel" >*@
                     </div>
                 </div>
-            }
+            
         </div>
 
     @Html.PagedListPager(Model.TRACKING_SYSTEM_HEADS, page => Url.Action("Index", new { page }))
+   
+    @Html.AntiForgeryToken()
+    @Html.Hidden("SortField", Model.SortField)
+    @Html.Hidden("SortDirection", Model.SortDirection)
 
     <table class="table">
         <tr>
             <th></th>
             <th>
-                <a href="?sort=單號">▲</a>
-                單號
-                <a href="?sort=單號&desc=true">▼</a>
+                <a href="#" data-sortfield="TRACKING_NUM" class="header">單號</a>
             </th>
             <th>
-                <a href="?sort=類 別">▲</a>
-                類 別
-                <a href="?sort=類 別&desc=true">▼</a>
+                <a href="#" data-sortfield="TRACKING_TYPE" class="header">類 別</a>
+            
             </th>
             <th>
-                <a href="?sort=客戶別">▲</a>
-                客戶別
-                <a href="?sort=客戶別&desc=true">▼</a>
+                <a href="#" data-sortfield="CUSTOMER_TYPE" class="header">客戶別</a>
             </th>
             <th>
-                <a href="?sort=需求日期">▲</a>
+                @*<a href="#" data-sortfield="REQUEST_DATE" class="header">需求日期</a>*@
                 需求日期
-                <a href="?sort=需求日期&desc=true">▼</a>
             </th>
             <th>
-                <a href="?sort=優先等級">▲</a>
-                優先等級
-                <a href="?sort=優先等級&desc=true">▼</a>
+                <a href="#" data-sortfield="PRIORITY_LEVEL" class="header">優先等級</a>
             </th>
             <th>
-                <a href="?sort=期限">▲</a>
-                期限
-                <a href="?sort=期限&desc=true">▼</a>
-            </th>
-            @*<th>
-                    需求內容
-                </th>*@
-            <th>
-                <a href="?sort=指派人員">▲</a>
-                指派人員
-                <a href="?sort=指派人員&desc=true">▼</a>
+                <a href="#" data-sortfield="DEADLINE" class="header">期限</a>
             </th>
             <th>
-                <a href="?sort=案件狀態">▲</a>
-                案件狀態
-                <a href="?sort=案件狀態&desc=true">▼</a>
+                <a href="#" data-sortfield="ASSIGN_PEOPLE" class="header">指派人員</a>
             </th>
             <th>
-                <a href="?sort=結案日期">▲</a>
+                <a href="#" data-sortfield="CASE_STATE" class="header">案件狀態</a>
+            </th>
+            <th>
+                @*<a href="#" data-sortfield="CLOSING_DATE" class="header">結案日期</a>*@
                 結案日期
-                <a href="?sort=結案日期&desc=true">▼</a>
             </th>
             <th>
-                <a href="?sort=需求者">▲</a>
+                @*<a href="#" data-sortfield="REQUESTER" class="header">需求者</a>*@
                 需求者
-                <a href="?sort=需求者&desc=true">▼</a>
             </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.ISDELETED)
-                </th>*@
-
         </tr>
 
         @foreach (var item in Model.TRACKING_SYSTEM_HEADS)
@@ -176,20 +161,33 @@
         }
 
     </table>
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
-        //$(function () {
-        //    $('#Cancel').click(function () {
-        //        //$('#TRACKING_SYSTEM_HEADS_ID').get(0).reset();
-        //        $('#TRACKING_TYPE_ID').val('');
-        //        $('#CUSTOMER_TYPE_ID').val('');
-        //        $('#PRIORITY_LEVEL_ID').val('');
-        //        $('#ASSIGN_PEOPLE_ID').val('');
-        //        $('#CASE_STATE_ID').val('');
-        //    });
-        //});
+
+        $(document).ready(function () {
+            $(".header").click(function (evt) {
+                var targetFormId = '#TRACKING_SYSTEM_HEADS_ID';
+                var sortfield = $(evt.target).data('sortfield');
+                if ($('#SortField').val() == sortfield) {
+                    if ($('#SortDirection').val() == 'ascending') {
+                        $('#SortDirection').val('descending');
+                    } else {
+                        $('#SortDirection').val('ascending');
+                    }
+                }else {
+                    $("#SortField").val(sortfield);
+                    $('#SortDirection').val('ascending');
+                }
+                evt.preventDefault();
+                $(targetFormId).submit();
+            });
+        });
+
+
+
 
         $(function () {
             $('.pagination>li>a[href]').each(function (i, item) {

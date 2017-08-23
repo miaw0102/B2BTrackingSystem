@@ -26,7 +26,7 @@ namespace B2BTrackingSystem.Controllers
         [宣告案件狀態分類的SelectList物件]
         [宣告指派人員分類的SelectList物件]
         //public ActionResult Index(int page = 1, string sort,bool? desc)
-        public ActionResult Index(string sort, bool? desc, int page = 1)
+        public ActionResult Index(int page = 1)
         {
 
             int currentPage = page < 1 ? 1 : page;
@@ -35,112 +35,7 @@ namespace B2BTrackingSystem.Controllers
             var data = query
                 .Where(h => h.ISDELETED == 0)
                 .OrderBy(h => h.TRACKING_NUM);
-
-            switch (sort)
-            {
-                case "單號":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.TRACKING_NUM);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.TRACKING_NUM);
-                    }
-                    break;
-                case "類 別":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.TRACKING_TYPE);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.TRACKING_TYPE);
-                    }
-                    break;
-                case "客戶別":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.CUSTOMER_TYPE);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.CUSTOMER_TYPE);
-                    }
-                    break;
-                case "需求日期":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.REQUEST_DATE);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.REQUEST_DATE);
-                    }
-                    break;
-                case "優先等級":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.PRIORITY_LEVEL);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.PRIORITY_LEVEL);
-                    }
-                    break;
-                case "期限":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.DEADLINE);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.DEADLINE);
-                    }
-                    break;
-                case "指派人員":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.ASSIGN_PEOPLE);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.ASSIGN_PEOPLE);
-                    }
-                    break;
-                case "案件狀態":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.CASE_STATE);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.CASE_STATE);
-                    }
-                    break;
-                case "結案日期":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.CLOSING_DATE);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.CLOSING_DATE);
-                    }
-                    break;
-                case "需求者":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.REQUESTER);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.REQUESTER);
-                    }
-                    break;
-                default:
-                    break;
-            }
+            
 
             var model = new TrackingSystemHeadsListViewModel
             {
@@ -158,10 +53,18 @@ namespace B2BTrackingSystem.Controllers
         [優先等級分類的SelectList物件]
         [宣告案件狀態分類的SelectList物件]
         [宣告指派人員分類的SelectList物件]
-        public ActionResult Index(TrackingSystemHeadsListViewModel model, string sort, bool? desc)
+        public ActionResult Index(TrackingSystemHeadsListViewModel model, string btn = null)
         {
+            if (model.SortField == null)
+            {
+                model.SortField = "TRACKING_NUM";
+                model.SortDirection = "ascending";
+            }
+
             var query = db.TRACKING_SYSTEM_HEADS.AsQueryable();
 
+
+            #region SearchData
             if (!String.IsNullOrEmpty(model.SearchParameter.TRACKING_TYPE))
             {
                 query = query.Where(p => p.TRACKING_TYPE.Contains(model.SearchParameter.TRACKING_TYPE));
@@ -186,116 +89,121 @@ namespace B2BTrackingSystem.Controllers
             {
                 query = query.Where(p => p.ASSIGN_PEOPLE.Contains(model.SearchParameter.ASSIGN_PEOPLE));
             }
+            #endregion
 
             var data = query
                .Where(h => h.ISDELETED == 0)
                .OrderBy(h => h.TRACKING_NUM);
 
-            switch (sort)
+            #region SortData
+            switch (model.SortField)
             {
-                case "單號":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.TRACKING_NUM);
-                    }
-                    else
+                case "TRACKING_NUM":
+                    if (model.SortDirection == "ascending")
                     {
                         data = data.OrderBy(m => m.TRACKING_NUM);
                     }
-                    break;
-                case "類 別":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.TRACKING_TYPE);
-                    }
                     else
+                    {
+                        data = data.OrderByDescending(m => m.TRACKING_NUM);
+                    }
+                    break;
+                case "TRACKING_TYPE":
+                    if (model.SortDirection == "ascending")
                     {
                         data = data.OrderBy(m => m.TRACKING_TYPE);
                     }
-                    break;
-                case "客戶別":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.CUSTOMER_TYPE);
-                    }
                     else
+                    {
+                        data = data.OrderByDescending(m => m.TRACKING_TYPE);
+                    }
+                    break;
+                case "CUSTOMER_TYPE":
+                    if (model.SortDirection == "ascending")
                     {
                         data = data.OrderBy(m => m.CUSTOMER_TYPE);
                     }
-                    break;
-                case "需求日期":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.REQUEST_DATE);
-                    }
                     else
+                    {
+                        data = data.OrderByDescending(m => m.CUSTOMER_TYPE);
+                    }
+                    break;
+                case "REQUEST_DATE":
+                    if (model.SortDirection == "ascending")
                     {
                         data = data.OrderBy(m => m.REQUEST_DATE);
                     }
-                    break;
-                case "優先等級":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.PRIORITY_LEVEL);
-                    }
                     else
+                    {
+                        data = data.OrderByDescending(m => m.REQUEST_DATE);
+                    }
+                    break;
+                case "PRIORITY_LEVEL":
+                    if (model.SortDirection == "ascending")
                     {
                         data = data.OrderBy(m => m.PRIORITY_LEVEL);
                     }
-                    break;
-                case "期限":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.DEADLINE);
-                    }
                     else
+                    {
+                        data = data.OrderByDescending(m => m.PRIORITY_LEVEL);
+                    }
+                    break;
+                case "DEADLINE":
+                    if (model.SortDirection == "ascending")
                     {
                         data = data.OrderBy(m => m.DEADLINE);
                     }
-                    break;
-                case "指派人員":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.ASSIGN_PEOPLE);
-                    }
                     else
+                    {
+                        data = data.OrderByDescending(m => m.DEADLINE);
+                    }
+                    break;
+                case "ASSIGN_PEOPLE":
+                    if (model.SortDirection == "ascending")
                     {
                         data = data.OrderBy(m => m.ASSIGN_PEOPLE);
                     }
-                    break;
-                case "案件狀態":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.CASE_STATE);
-                    }
                     else
+                    {
+                        data = data.OrderByDescending(m => m.ASSIGN_PEOPLE);
+                    }
+                    break;
+                case "CASE_STATE":
+                    if (model.SortDirection == "ascending")
                     {
                         data = data.OrderBy(m => m.CASE_STATE);
                     }
-                    break;
-                case "結案日期":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.CLOSING_DATE);
-                    }
                     else
+                    {
+                        data = data.OrderByDescending(m => m.CASE_STATE);
+                    }
+                    break;
+                case "CLOSING_DATE":
+                    if (model.SortDirection == "ascending")
                     {
                         data = data.OrderBy(m => m.CLOSING_DATE);
                     }
-                    break;
-                case "需求者":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.REQUESTER);
-                    }
                     else
+                    {
+                        data = data.OrderByDescending(m => m.CLOSING_DATE);
+                    }
+                    break;
+                case "REQUESTER":
+                    if (model.SortDirection == "ascending")
                     {
                         data = data.OrderBy(m => m.REQUESTER);
                     }
+                    else
+                    {
+                        data = data.OrderByDescending(m => m.REQUESTER);
+                    }
                     break;
+
                 default:
                     break;
             }
+            #endregion
+           
 
             int currentPage = model.PageIndex < 1 ? 1 : model.PageIndex;
 
