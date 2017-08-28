@@ -13,6 +13,7 @@ namespace B2BTrackingSystem.Models
     {
         [Required]
         [DisplayFormat(DataFormatString = "{0:n0}")]
+        [DataType(DataType.Text)]
         public decimal TRACKING_NUM { get; set; }
         
         [StringLength(15, ErrorMessage="欄位長度不得大於 15 個字元")]
@@ -44,6 +45,7 @@ namespace B2BTrackingSystem.Models
         
         [StringLength(200, ErrorMessage="欄位長度不得大於 200 個字元")]
         [Required]
+        [DataType(DataType.MultilineText)]
         public string TRACKING_CONTENT { get; set; }
         
         [StringLength(30, ErrorMessage="欄位長度不得大於 30 個字元")]

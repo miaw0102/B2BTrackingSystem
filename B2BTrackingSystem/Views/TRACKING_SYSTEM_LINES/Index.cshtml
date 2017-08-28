@@ -1,22 +1,24 @@
-﻿@model IPagedList<B2BTrackingSystem.Models.TRACKING_SYSTEM_LINES>
+﻿@*@model IPagedList<B2BTrackingSystem.Models.TRACKING_SYSTEM_LINES>*@
+@model IEnumerable<B2BTrackingSystem.Models.TRACKING_SYSTEM_LINES>
 
 @{
     ViewBag.Title = "Index";
+
+    Layout = "";
 }
 
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("新增明細", "Create", new { TrackingHeaderNum = ViewBag.HEADER_TRACKING_NUM })*@
+    @Html.ActionLink("新增明細", "Create", new { TrackingHeaderNum = ViewBag.HEADER_TRACKING_NUM}, new { @class = "btn btn-primary" })
 </p>
+
 <table class="table">
     <tr>
         <th></th>
         <th>
-            <a href="?sort=追蹤單號碼">▲</a>
+            @*<a href="?sort=追蹤單號碼">▲</a>*@
             追蹤單號碼
-            <a href="?sort=追蹤單號碼&desc=true">▼</a>
+            @*<a href="?sort=追蹤單號碼&desc=true">▼</a>*@
         </th>
         <th>
             @*<a href="?sort=追蹤單明細號碼">▲</a>*@
@@ -24,14 +26,14 @@
             @*<a href="?sort=追蹤單明細號碼&desc=true">▼</a>*@
         </th>
         <th>
-            <a href="?sort=處理日期">▲</a>
+            @*<a href="?sort=處理日期">▲</a>*@
             處理日期
-            <a href="?sort=處理日期&desc=true">▼</a>
+            @*<a href="?sort=處理日期&desc=true">▼</a>*@
         </th>
         <th>
-            <a href="?sort=指派人員">▲</a>
+            @*<a href="?sort=指派人員">▲</a>*@
             指派人員
-            <a href="?sort=指派人員&desc=true">▼</a>
+            @*<a href="?sort=指派人員&desc=true">▼</a>*@
         </th>
         <th>
             @*<a href="?sort=客戶回覆">▲</a>*@
@@ -40,32 +42,30 @@
         </th>
     </tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.TRACKING_LINE_NUM }) |
-            @Html.ActionLink("Details", "Details", new { id = item.TRACKING_LINE_NUM }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.TRACKING_LINE_NUM })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TRACKING_SYSTEM_HEADS.TRACKING_NUM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TRACKING_LINE_NUM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROCESSING_DATE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ASSIGN_PEOPLE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CUSTOMER_REPLY)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TRACKING_LINE_NUM })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRACKING_SYSTEM_HEADS.TRACKING_NUM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRACKING_LINE_NUM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PROCESSING_DATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ASSIGN_PEOPLE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CUSTOMER_REPLY)
+            </td>
+        </tr>
+    }
 
 </table>
 
-@Html.PagedListPager(Model,Page => Url.Action("Index",new { Page }))
+@*@Html.PagedListPager(Model,Page => Url.Action("Index",new { Page }))*@

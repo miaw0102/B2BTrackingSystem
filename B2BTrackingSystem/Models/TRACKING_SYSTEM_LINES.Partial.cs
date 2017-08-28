@@ -22,6 +22,7 @@ namespace B2BTrackingSystem.Models
         
         [StringLength(200, ErrorMessage="欄位長度不得大於 200 個字元")]
         [Required]
+        [DataType(DataType.MultilineText)]
         public string CUSTOMER_REPLY { get; set; }
         
         [StringLength(30, ErrorMessage="欄位長度不得大於 30 個字元")]
@@ -30,6 +31,7 @@ namespace B2BTrackingSystem.Models
         public string ASSIGN_PEOPLE { get; set; }
         [Required]
         [DisplayFormat(DataFormatString = "{0:n0}")]
+        [DataType(DataType.Text)]
         public decimal TRACKING_LINE_NUM { get; set; }
         [Required]
         public decimal ISDELETED { get; set; }

@@ -19,7 +19,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Tracking System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*@Html.ActionLink("Tracking System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                <li>@Html.ActionLink("Tracking System", "Index", "TRACKING_SYSTEM_HEADS", new { area = "" }, new { @class = "navbar-brand" })</li>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -27,7 +28,7 @@
                     <li>@Html.ActionLink("關於", "About", "Home")</li>
                     <li>@Html.ActionLink("連絡方式", "Contact", "Home")</li>*@
                     <li>@Html.ActionLink("追蹤問題列表", "Index", "TRACKING_SYSTEM_HEADS")</li>
-                    <li>@Html.ActionLink("追蹤問題明細", "Index", "TRACKING_SYSTEM_LINES")</li>
+                    <li>@*@Html.ActionLink("追蹤問題明細", "Index", "TRACKING_SYSTEM_LINES")*@</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

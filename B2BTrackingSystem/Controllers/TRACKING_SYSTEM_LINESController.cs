@@ -15,84 +15,33 @@ namespace B2BTrackingSystem.Controllers
     {
         private B2BTrackingSystemEntities db = new B2BTrackingSystemEntities();
 
-        private int pageSize = 5;
+        private int pageSize = 2;
 
         // GET: TRACKING_SYSTEM_LINES
-        public ActionResult Index(string sort, bool? desc, int page = 1)
+        //public ActionResult Index(decimal TrackingHeaderNum, int page )
+        public ActionResult Index(decimal TrackingHeaderNum)
         {
-            int currentPage = page < 1 ? 1 : page;
 
-            var all = db.TRACKING_SYSTEM_LINES.Include(t => t.TRACKING_SYSTEM_HEADS).AsQueryable();
+            //page = 1;
+
+            //int currentPage = page < 1 ? 1 : page;
+
+            ViewBag.HEADER_TRACKING_NUM = TrackingHeaderNum;
+
+            var all = db.TRACKING_SYSTEM_LINES.Include(t => t.TRACKING_SYSTEM_HEADS)
+                     .Where(p => p.HEADER_TRACKING_NUM == TrackingHeaderNum).AsQueryable();
 
             var data = all
                 .Where(d => d.ISDELETED == 0 )
                 .OrderBy(d => d.HEADER_TRACKING_NUM)
                 .ThenBy(d => d.TRACKING_LINE_NUM);
 
-            switch (sort)
-            {
-                case "追蹤單號碼":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.TRACKING_SYSTEM_HEADS.TRACKING_NUM)
-                              .ThenByDescending(m => m.TRACKING_LINE_NUM);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.TRACKING_SYSTEM_HEADS.TRACKING_NUM)
-                              .ThenBy(m => m.TRACKING_LINE_NUM);
-                    }
-                    break;
-                case "追蹤單明細號碼":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.TRACKING_LINE_NUM);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.TRACKING_LINE_NUM);
-                    }
-                    break;
-                case "處理日期":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.PROCESSING_DATE);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.PROCESSING_DATE);
-                    }
-                    break;
-                //case "客戶回覆":
-                //    if (desc.HasValue && desc.Value)
-                //    {
-                //        data = data.OrderByDescending(m => m.CUSTOMER_REPLY);
-                //    }
-                //    else
-                //    {
-                //        data = data.OrderBy(m => m.CUSTOMER_REPLY);
-                //    }
-                //    break;
-                case "指派人員":
-                    if (desc.HasValue && desc.Value)
-                    {
-                        data = data.OrderByDescending(m => m.ASSIGN_PEOPLE);
-                    }
-                    else
-                    {
-                        data = data.OrderBy(m => m.ASSIGN_PEOPLE);
-                    }
-                    break;
-                default:
-                    break;
-            }
+            return View(data);
 
-            var result = data.ToPagedList(currentPage, pageSize);
+            //var result = data.ToPagedList(currentPage, pageSize);
 
-            return View(result);
+            //return View(result);
 
-            //var tRACKING_SYSTEM_LINES = db.TRACKING_SYSTEM_LINES.Include(t => t.TRACKING_SYSTEM_HEADS);
-            //return View(tRACKING_SYSTEM_LINES.ToList());
         }
 
         // GET: TRACKING_SYSTEM_LINES/Details/5
@@ -112,9 +61,11 @@ namespace B2BTrackingSystem.Controllers
 
         // GET: TRACKING_SYSTEM_LINES/Create
         [宣告指派人員分類的SelectList物件]
-        public ActionResult Create()
+        public ActionResult Create(decimal TrackingHeaderNum)
+        //public ActionResult Create()
         {
-            ViewBag.HEADER_TRACKING_NUM = new SelectList(db.TRACKING_SYSTEM_HEADS, "TRACKING_NUM", "TRACKING_NUM");
+            //ViewBag.HEADER_TRACKING_NUM = new SelectList(db.TRACKING_SYSTEM_HEADS, "TRACKING_NUM", "TRACKING_NUM");
+            ViewBag.HEADER_TRACKING_NUM = TrackingHeaderNum;
             return View();
         }
 
@@ -135,11 +86,14 @@ namespace B2BTrackingSystem.Controllers
 
                 db.TRACKING_SYSTEM_LINES.Add(tRACKING_SYSTEM_LINES);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("Details", "TRACKING_SYSTEM_HEADS", new { id = tRACKING_SYSTEM_LINES.HEADER_TRACKING_NUM });
             }
 
             ViewBag.HEADER_TRACKING_NUM = new SelectList(db.TRACKING_SYSTEM_HEADS, "TRACKING_NUM", "TRACKING_NUM", tRACKING_SYSTEM_LINES.HEADER_TRACKING_NUM);
-            return View(tRACKING_SYSTEM_LINES);
+
+            return RedirectToAction("Details", "TRACKING_SYSTEM_HEADS", new { id = tRACKING_SYSTEM_LINES.HEADER_TRACKING_NUM });
+            //return View(tRACKING_SYSTEM_LINES);
         }
 
         // GET: TRACKING_SYSTEM_LINES/Edit/5
@@ -157,6 +111,7 @@ namespace B2BTrackingSystem.Controllers
             }
             ViewBag.HEADER_TRACKING_NUM = new SelectList(db.TRACKING_SYSTEM_HEADS, "TRACKING_NUM", "TRACKING_NUM", tRACKING_SYSTEM_LINES.HEADER_TRACKING_NUM);
             return View(tRACKING_SYSTEM_LINES);
+            //return RedirectToAction("Details", "TRACKING_SYSTEM_HEADS");
         }
 
         // POST: TRACKING_SYSTEM_LINES/Edit/5
@@ -171,10 +126,13 @@ namespace B2BTrackingSystem.Controllers
             {
                 db.Entry(tRACKING_SYSTEM_LINES).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("Details", "TRACKING_SYSTEM_HEADS", new { id = tRACKING_SYSTEM_LINES.HEADER_TRACKING_NUM });
             }
             ViewBag.HEADER_TRACKING_NUM = new SelectList(db.TRACKING_SYSTEM_HEADS, "TRACKING_NUM", "TRACKING_NUM", tRACKING_SYSTEM_LINES.HEADER_TRACKING_NUM);
-            return View(tRACKING_SYSTEM_LINES);
+
+            return RedirectToAction("Details", "TRACKING_SYSTEM_HEADS", new { id = tRACKING_SYSTEM_LINES.HEADER_TRACKING_NUM });
+            //return View(tRACKING_SYSTEM_LINES);
         }
 
         // GET: TRACKING_SYSTEM_LINES/Delete/5

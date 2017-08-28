@@ -6,206 +6,214 @@
 }
 
 
-<h2>追蹤問題列表</h2>
+<h2>追蹤項目列表</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
 @using (Html.BeginForm("Index", "TRACKING_SYSTEM_HEADS", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "TRACKING_SYSTEM_HEADS_ID" }))
 {
 
     <div class="well">
-        
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label class="col-lg-3 control-label">類別:</label>
-                        <div class="col-lg-8">
-                            @*@Html.DropDownList("追蹤單分類", null, "", new { @class = "form-control", @id = "TRACKING_TYPE_ID" })*@
-                            @Html.EditorFor(x => x.SearchParameter.TRACKING_TYPE, new { htmlAttributes = new { @class = "form-control", @id = "TRACKING_TYPE_ID" } })
-                        </div>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="col-lg-3 control-label">客戶別:</label>
-                        <div class="col-lg-8">
-                            @*@Html.DropDownList("客戶分類", null, "", new { @class = "form-control", @id = "CUSTOMER_TYPE_ID" })*@
-                            @Html.EditorFor(x => x.SearchParameter.CUSTOMER_TYPE, new { htmlAttributes = new { @class = "form-control", @id = "CUSTOMER_TYPE_ID" } })
-                        </div>
-                    </div>
+
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="col-lg-3 control-label">類別:</label>
+                <div class="col-lg-8">
+                    @*@Html.DropDownList("追蹤單分類", null, "", new { @class = "form-control", @id = "TRACKING_TYPE_ID" })*@
+                    @Html.EditorFor(x => x.SearchParameter.TRACKING_TYPE, new { htmlAttributes = new { @class = "form-control", @id = "TRACKING_TYPE_ID" } })
                 </div>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label class="col-lg-3 control-label">優先等級:</label>
-                        <div class="col-lg-8">
-                            @*@Html.DropDownList("優先等級分類", null, "", new { @class = "form-control", @id = "PRIORITY_LEVEL_ID" })*@
-                            @Html.EditorFor(x => x.SearchParameter.PRIORITY_LEVEL, new { htmlAttributes = new { @class = "form-control", @id = "PRIORITY_LEVEL_ID" } })
-                        </div>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="col-lg-3 control-label">指派人員:</label>
-                        <div class="col-lg-8">
-                            @*@Html.DropDownList("指派人員分類", null, "", new { @class = "form-control",@id= "ASSIGN_PEOPLE_ID" })*@
-                            @Html.EditorFor(x => x.SearchParameter.ASSIGN_PEOPLE, new { htmlAttributes = new { @class = "form-control", @id = "ASSIGN_PEOPLE_ID" } })
-                        </div>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="col-lg-3 control-label">案件狀態:</label>
-                        <div class="col-lg-8">
-                            @*@Html.DropDownList("案件狀態分類", null, "", new { @class = "form-control",@id = "CASE_STATE_ID" })*@
-                            @Html.EditorFor(x => x.SearchParameter.CASE_STATE, new { htmlAttributes = new { @class = "form-control", @id = "CASE_STATE_ID" } })
-                        </div>
-                    </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="col-lg-3 control-label">客戶別:</label>
+                <div class="col-lg-8">
+                    @*@Html.DropDownList("客戶分類", null, "", new { @class = "form-control", @id = "CUSTOMER_TYPE_ID" })*@
+                    @Html.EditorFor(x => x.SearchParameter.CUSTOMER_TYPE, new { htmlAttributes = new { @class = "form-control", @id = "CUSTOMER_TYPE_ID" } })
                 </div>
-                <span class="clearfix"></span>
-                <div class="row">
-                    <div class="col-md-offset-5">
-                        <input type="submit" class="btn btn-primary" value="Search">
-                        <span></span>
-                        @*<input type="reset" class="btn btn-default" value="Cancel">*@
-                        @*<input type="button" class="btn btn-default" value="Cancel" id="Cancel" >*@
-                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="col-lg-3 control-label">優先等級:</label>
+                <div class="col-lg-8">
+                    @*@Html.DropDownList("優先等級分類", null, "", new { @class = "form-control", @id = "PRIORITY_LEVEL_ID" })*@
+                    @Html.EditorFor(x => x.SearchParameter.PRIORITY_LEVEL, new { htmlAttributes = new { @class = "form-control", @id = "PRIORITY_LEVEL_ID" } })
                 </div>
-            
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="col-lg-3 control-label">指派人員:</label>
+                <div class="col-lg-8">
+                    @*@Html.DropDownList("指派人員分類", null, "", new { @class = "form-control",@id= "ASSIGN_PEOPLE_ID" })*@
+                    @Html.EditorFor(x => x.SearchParameter.ASSIGN_PEOPLE, new { htmlAttributes = new { @class = "form-control", @id = "ASSIGN_PEOPLE_ID" } })
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="col-lg-3 control-label">案件狀態:</label>
+                <div class="col-lg-8">
+                    @*@Html.DropDownList("案件狀態分類", null, "", new { @class = "form-control",@id = "CASE_STATE_ID" })*@
+                    @Html.EditorFor(x => x.SearchParameter.CASE_STATE, new { htmlAttributes = new { @class = "form-control", @id = "CASE_STATE_ID" } })
+                </div>
+            </div>
+        </div>
+        <span class="clearfix"></span>
+        <div class="row">
+            <div class="col-md-offset-5">
+                <input type="submit" class="btn btn-primary" value="Search">
+                <span></span>
+                @*<input type="reset" class="btn btn-default" value="Cancel">*@
+                @*<input type="button" class="btn btn-default" value="Cancel" id="Cancel" >*@
+            </div>
         </div>
 
-    @Html.PagedListPager(Model.TRACKING_SYSTEM_HEADS, page => Url.Action("Index", new { page }))
-   
-    @Html.AntiForgeryToken()
-    @Html.Hidden("SortField", Model.SortField)
-    @Html.Hidden("SortDirection", Model.SortDirection)
+    </div>
 
-    <table class="table">
-        <tr>
-            <th></th>
-            <th>
-                <a href="#" data-sortfield="TRACKING_NUM" class="header">單號</a>
-            </th>
-            <th>
-                <a href="#" data-sortfield="TRACKING_TYPE" class="header">類 別</a>
-            
-            </th>
-            <th>
-                <a href="#" data-sortfield="CUSTOMER_TYPE" class="header">客戶別</a>
-            </th>
-            <th>
-                @*<a href="#" data-sortfield="REQUEST_DATE" class="header">需求日期</a>*@
-                需求日期
-            </th>
-            <th>
-                <a href="#" data-sortfield="PRIORITY_LEVEL" class="header">優先等級</a>
-            </th>
-            <th>
-                <a href="#" data-sortfield="DEADLINE" class="header">期限</a>
-            </th>
-            <th>
-                <a href="#" data-sortfield="ASSIGN_PEOPLE" class="header">指派人員</a>
-            </th>
-            <th>
-                <a href="#" data-sortfield="CASE_STATE" class="header">案件狀態</a>
-            </th>
-            <th>
-                @*<a href="#" data-sortfield="CLOSING_DATE" class="header">結案日期</a>*@
-                結案日期
-            </th>
-            <th>
-                @*<a href="#" data-sortfield="REQUESTER" class="header">需求者</a>*@
-                需求者
-            </th>
-        </tr>
+        <div class="pagination" style="display:inline-block; vertical-align:middle;">
+            @Html.ActionLink("新增項目", "Create", null, new { @class = "btn btn-primary" })
+            @*@Html.ActionLink("新增項目", "Create")*@  
+            @*<button onclick="location.href='@Url.Action("Create", "TRACKING_SYSTEM_HEADS")';return false;">新增項目</button>*@
+        </div>
 
-        @foreach (var item in Model.TRACKING_SYSTEM_HEADS)
-        {
-            <tr>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.TRACKING_NUM }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.TRACKING_NUM })
-                    @*@Html.ActionLink("Delete", "Delete", new { id = item.TRACKING_NUM })*@
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TRACKING_NUM)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TRACKING_TYPE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CUSTOMER_TYPE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.REQUEST_DATE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PRIORITY_LEVEL)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DEADLINE)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.TRACKING_CONTENT)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.ASSIGN_PEOPLE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CASE_STATE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CLOSING_DATE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.REQUESTER)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.ISDELETED)
-                    </td>*@
-            </tr>
-        }
+        <div style="display:inline-block;vertical-align:middle;float:right; "class="page-count">
+            @Html.PagedListPager(Model.TRACKING_SYSTEM_HEADS, page => Url.Action("Index", new { page }))
+        </div>
+        
 
-    </table>
-}
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript">
+            @Html.AntiForgeryToken()
+            @Html.Hidden("SortField", Model.SortField)
+            @Html.Hidden("SortDirection", Model.SortDirection)
 
-        $(document).ready(function () {
-            $(".header").click(function (evt) {
-                var targetFormId = '#TRACKING_SYSTEM_HEADS_ID';
-                var sortfield = $(evt.target).data('sortfield');
-                if ($('#SortField').val() == sortfield) {
-                    if ($('#SortDirection').val() == 'ascending') {
-                        $('#SortDirection').val('descending');
-                    } else {
-                        $('#SortDirection').val('ascending');
-                    }
-                }else {
-                    $("#SortField").val(sortfield);
-                    $('#SortDirection').val('ascending');
+            <table class="table">
+                <tr>
+
+                    <th>
+                        <a href="#" data-sortfield="TRACKING_NUM" class="header">單號</a>
+                    </th>
+                    <th>
+                        <a href="#" data-sortfield="TRACKING_TYPE" class="header">類 別</a>
+
+                    </th>
+                    <th>
+                        <a href="#" data-sortfield="CUSTOMER_TYPE" class="header">客戶別</a>
+                    </th>
+                    <th>
+                        @*<a href="#" data-sortfield="REQUEST_DATE" class="header">需求日期</a>*@
+                        需求日期
+                    </th>
+                    <th>
+                        <a href="#" data-sortfield="PRIORITY_LEVEL" class="header">優先等級</a>
+                    </th>
+                    <th>
+                        <a href="#" data-sortfield="DEADLINE" class="header">期限</a>
+                    </th>
+                    <th>
+                        <a href="#" data-sortfield="ASSIGN_PEOPLE" class="header">指派人員</a>
+                    </th>
+                    <th>
+                        <a href="#" data-sortfield="CASE_STATE" class="header">案件狀態</a>
+                    </th>
+                    <th>
+                        @*<a href="#" data-sortfield="CLOSING_DATE" class="header">結案日期</a>*@
+                        結案日期
+                    </th>
+                    <th>
+                        @*<a href="#" data-sortfield="REQUESTER" class="header">需求者</a>*@
+                        需求者
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.TRACKING_SYSTEM_HEADS)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TRACKING_NUM)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TRACKING_TYPE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CUSTOMER_TYPE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.REQUEST_DATE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PRIORITY_LEVEL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DEADLINE)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.TRACKING_CONTENT)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ASSIGN_PEOPLE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CASE_STATE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CLOSING_DATE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.REQUESTER)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.ISDELETED)
+                            </td>*@
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.TRACKING_NUM }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.TRACKING_NUM })
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.TRACKING_NUM })*@
+                        </td>
+                    </tr>
                 }
-                evt.preventDefault();
-                $(targetFormId).submit();
-            });
-        });
 
-
-
-
-        $(function () {
-            $('.pagination>li>a[href]').each(function (i, item) {
-                var page = $(item).attr('href').replace('/TRACKING_SYSTEM_HEADS?page=', '');
-                $(item).attr('href', '#').click(function () { postPage(page); });
-
-            });
-        });
-
-        function postPage(page) {
-            var targetFormId = '#TRACKING_SYSTEM_HEADS_ID';
-            if ($(targetFormId).size() > 0) {
-                $('<input>')
-                    .attr({ type: 'hidden', id: 'PageIndex', name: 'PageIndex', value: page })
-                    .appendTo($(targetFormId));
-                $(targetFormId).submit();
+            </table>
             }
-        };
-    </script>
-}
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+                <script type="text/javascript">
+
+                    $(document).ready(function () {
+                        $(".header").click(function (evt) {
+                            var targetFormId = '#TRACKING_SYSTEM_HEADS_ID';
+                            var sortfield = $(evt.target).data('sortfield');
+                            if ($('#SortField').val() == sortfield) {
+                                if ($('#SortDirection').val() == 'ascending') {
+                                    $('#SortDirection').val('descending');
+                                } else {
+                                    $('#SortDirection').val('ascending');
+                                }
+                            } else {
+                                $("#SortField").val(sortfield);
+                                $('#SortDirection').val('ascending');
+                            }
+                            evt.preventDefault();
+                            $(targetFormId).submit();
+                        });
+                    });
+
+
+
+
+                    $(function () {
+                        $('.pagination>li>a[href]').each(function (i, item) {
+                            var page = $(item).attr('href').replace('/TRACKING_SYSTEM_HEADS?page=', '');
+                            $(item).attr('href', '#').click(function () { postPage(page); });
+
+                        });
+                    });
+
+                    function postPage(page) {
+                        var targetFormId = '#TRACKING_SYSTEM_HEADS_ID';
+                        if ($(targetFormId).size() > 0) {
+                            $('<input>')
+                                .attr({ type: 'hidden', id: 'PageIndex', name: 'PageIndex', value: page })
+                                .appendTo($(targetFormId));
+                            $(targetFormId).submit();
+                        }
+                    };
+                </script>
+            }
 
