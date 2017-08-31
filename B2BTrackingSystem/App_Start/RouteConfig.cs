@@ -16,7 +16,8 @@ namespace B2BTrackingSystem
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                //defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "TRACKING_SYSTEM_HEADS", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

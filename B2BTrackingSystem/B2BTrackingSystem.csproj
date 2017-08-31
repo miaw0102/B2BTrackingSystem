@@ -300,6 +300,7 @@
     <Content Include="Models\B2BTrackingSystemDB.edmx.diagram">
       <DependentUpon>B2BTrackingSystemDB.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\B2BTrackingSystem.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

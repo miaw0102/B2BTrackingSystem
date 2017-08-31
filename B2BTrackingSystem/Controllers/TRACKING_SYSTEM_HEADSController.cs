@@ -35,7 +35,6 @@ namespace B2BTrackingSystem.Controllers
             var data = query
                 .Where(h => h.ISDELETED == 0)
                 .OrderBy(h => h.TRACKING_NUM);
-            
 
             var model = new TrackingSystemHeadsListViewModel
             {
@@ -101,11 +100,11 @@ namespace B2BTrackingSystem.Controllers
                 case "TRACKING_NUM":
                     if (model.SortDirection == "ascending")
                     {
-                        data = data.OrderBy(m => m.TRACKING_NUM);
+                        data = data.OrderByDescending(m => m.TRACKING_NUM);
                     }
                     else
                     {
-                        data = data.OrderByDescending(m => m.TRACKING_NUM);
+                        data = data.OrderBy(m => m.TRACKING_NUM);
                     }
                     break;
                 case "TRACKING_TYPE":
