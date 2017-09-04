@@ -227,20 +227,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\B2BTrackingSystemDB.Context.cs">
+    <Compile Include="Models\B2BDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>B2BTrackingSystemDB.Context.tt</DependentUpon>
+      <DependentUpon>B2BDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\B2BTrackingSystemDB.cs">
+    <Compile Include="Models\B2BDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>B2BTrackingSystemDB.tt</DependentUpon>
+      <DependentUpon>B2BDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\B2BTrackingSystemDB.Designer.cs">
+    <Compile Include="Models\B2BDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>B2BTrackingSystemDB.edmx</DependentUpon>
+      <DependentUpon>B2BDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EFGeneratePartialClass.cs">
       <AutoGen>True</AutoGen>
@@ -250,13 +250,13 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TRACKING_SYSTEM_HEADS.cs">
-      <DependentUpon>B2BTrackingSystemDB.tt</DependentUpon>
+      <DependentUpon>B2BDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TRACKING_SYSTEM_HEADS.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TRACKING_SYSTEM_LINES.cs">
-      <DependentUpon>B2BTrackingSystemDB.tt</DependentUpon>
+      <DependentUpon>B2BDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TRACKING_SYSTEM_LINES.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
@@ -274,15 +274,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\B2BTrackingSystemDB.Context.tt">
+    <Content Include="Models\B2BDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>B2BTrackingSystemDB.edmx</DependentUpon>
-      <LastGenOutput>B2BTrackingSystemDB.Context.cs</LastGenOutput>
+      <DependentUpon>B2BDB.edmx</DependentUpon>
+      <LastGenOutput>B2BDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\B2BTrackingSystemDB.tt">
+    <Content Include="Models\B2BDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>B2BTrackingSystemDB.edmx</DependentUpon>
-      <LastGenOutput>B2BTrackingSystemDB.cs</LastGenOutput>
+      <DependentUpon>B2BDB.edmx</DependentUpon>
+      <LastGenOutput>B2BDB.cs</LastGenOutput>
     </Content>
     <Content Include="Models\EFGeneratePartialClass.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -293,12 +293,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\B2BTrackingSystemDB.edmx">
+    <EntityDeploy Include="Models\B2BDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>B2BTrackingSystemDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>B2BDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\B2BTrackingSystemDB.edmx.diagram">
-      <DependentUpon>B2BTrackingSystemDB.edmx</DependentUpon>
+    <Content Include="Models\B2BDB.edmx.diagram">
+      <DependentUpon>B2BDB.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\B2BTrackingSystem.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
