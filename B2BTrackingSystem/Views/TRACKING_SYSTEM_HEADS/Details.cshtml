@@ -7,103 +7,103 @@
 <h2>Details</h2>
 
 
-    @*<h4>追蹤問題列表</h4>*@
-    @*<hr />*@
+@*<h4>追蹤問題列表</h4>*@
+@*<hr />*@
 
 
-    <div class="well">
-        <div class="row">
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">單號:</label>
-                <div class="col-lg-8">
-                    @Html.DisplayFor(model => model.TRACKING_NUM)
-                </div>
-            </div>
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">類別:</label>
-                <div class="col-lg-8">
-                    @Html.DisplayFor(model => model.TRACKING_TYPE)
-                </div>
+<div class="well">
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label class="col-lg-3 control-label">單號:</label>
+            <div class="col-lg-8">
+                @Html.DisplayFor(model => model.TRACKING_NUM)
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">客戶別:</label>
-                <div class="col-lg-8">
-                    @Html.DisplayFor(model => model.CUSTOMER_TYPE)
-                </div>
-            </div>
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">需求者:</label>
-                <div class="col-lg-8">
-                    @Html.DisplayFor(model => model.REQUESTER)
-                </div>
+        <div class="col-md-6 form-group">
+            <label class="col-lg-3 control-label">類別:</label>
+            <div class="col-lg-8">
+                @Html.DisplayFor(model => model.TRACKING_TYPE)
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">需求日期:</label>
-                <div class="col-lg-8">
-                    @Html.DisplayFor(model => model.REQUEST_DATE)
-                </div>
-            </div>
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">優先等級:</label>
-                <div class="col-lg-8">
-                    @Html.DisplayFor(model => model.PRIORITY_LEVEL)
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">期限:</label>
-                <div class="col-lg-8">
-                    @Html.DisplayFor(model => model.DEADLINE)
-                </div>
-            </div>
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">指派人員:</label>
-                <div class="col-lg-8">
-                    @Html.DisplayFor(model => model.ASSIGN_PEOPLE)
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">案件狀態:</label>
-                <div class="col-lg-8">
-                    @Html.DisplayFor(model => model.CASE_STATE)
-                </div>
-            </div>
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">需求內容:</label>
-                <div class="col-lg-8">
-                    @Html.DisplayFor(model => model.TRACKING_CONTENT)
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">
-                    @(Model.CLOSING_DATE != null ? "結案日期" : "")
-                </label>
-                <div class="col-lg-8">
-                    @Html.DisplayFor(model => model.CLOSING_DATE, new { htmlAttributes = new { @style = "display: none" } })
-                </div>
-            </div>
-        </div>
-
-        <p>
-            @*@Html.ActionLink("Edit", "Edit", new { id = Model.TRACKING_NUM })*@
-            @Html.ActionLink("回追蹤項目列表", "Index")
-        </p>
-
     </div>
+
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label class="col-lg-3 control-label">客戶別:</label>
+            <div class="col-lg-8">
+                @Html.DisplayFor(model => model.CUSTOMER_TYPE)
+            </div>
+        </div>
+        <div class="col-md-6 form-group">
+            <label class="col-lg-3 control-label">需求者:</label>
+            <div class="col-lg-8">
+                @Html.DisplayFor(model => model.REQUESTER)
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label class="col-lg-3 control-label">需求日期:</label>
+            <div class="col-lg-8">
+                @Html.DisplayFor(model => model.REQUEST_DATE)
+            </div>
+        </div>
+        <div class="col-md-6 form-group">
+            <label class="col-lg-3 control-label">優先等級:</label>
+            <div class="col-lg-8">
+                @Html.DisplayFor(model => model.PRIORITY_LEVEL)
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label class="col-lg-3 control-label">期限:</label>
+            <div class="col-lg-8">
+                @Html.DisplayFor(model => model.DEADLINE)
+            </div>
+        </div>
+        <div class="col-md-6 form-group">
+            <label class="col-lg-3 control-label">指派人員:</label>
+            <div class="col-lg-8">
+                @Html.DisplayFor(model => model.ASSIGN_PEOPLE)
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label class="col-lg-3 control-label">案件狀態:</label>
+            <div class="col-lg-8">
+                @Html.DisplayFor(model => model.CASE_STATE)
+            </div>
+        </div>
+        <div class="col-md-6 form-group">
+            <label class="col-lg-3 control-label">需求內容:</label>
+            <div class="col-lg-8">
+                @Html.DisplayFor(model => model.TRACKING_CONTENT)
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label class="col-lg-3 control-label">
+                @(Model.CLOSING_DATE != null ? "結案日期" : "")
+            </label>
+            <div class="col-lg-8">
+                @Html.DisplayFor(model => model.CLOSING_DATE, new { htmlAttributes = new { @style = "display: none" } })
+            </div>
+        </div>
+    </div>
+
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.TRACKING_NUM })*@
+        @Html.ActionLink("回追蹤項目列表", "Index")
+    </p>
+
+</div>
 
 
 

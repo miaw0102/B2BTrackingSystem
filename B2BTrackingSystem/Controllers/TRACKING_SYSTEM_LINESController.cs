@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using B2BTrackingSystem.Models;
 using PagedList;
 
+
 namespace B2BTrackingSystem.Controllers
 {
     public class TRACKING_SYSTEM_LINESController : Controller
@@ -18,7 +19,6 @@ namespace B2BTrackingSystem.Controllers
         private int pageSize = 2;
 
         // GET: TRACKING_SYSTEM_LINES
-        //public ActionResult Index(decimal TrackingHeaderNum, int page )
         public ActionResult Index(decimal TrackingHeaderNum)
         {
 
@@ -32,7 +32,7 @@ namespace B2BTrackingSystem.Controllers
                      .Where(p => p.HEADER_TRACKING_NUM == TrackingHeaderNum).AsQueryable();
 
             var data = all
-                .Where(d => d.ISDELETED == 0 )
+                .Where(d => d.ISDELETED == 0)
                 .OrderBy(d => d.HEADER_TRACKING_NUM)
                 .ThenBy(d => d.TRACKING_LINE_NUM);
 
@@ -43,6 +43,7 @@ namespace B2BTrackingSystem.Controllers
             //return View(result);
 
         }
+
 
         // GET: TRACKING_SYSTEM_LINES/Details/5
         public ActionResult Details(decimal id)
@@ -62,9 +63,8 @@ namespace B2BTrackingSystem.Controllers
         // GET: TRACKING_SYSTEM_LINES/Create
         [宣告指派人員分類的SelectList物件]
         public ActionResult Create(decimal TrackingHeaderNum)
-        //public ActionResult Create()
         {
-            //ViewBag.HEADER_TRACKING_NUM = new SelectList(db.TRACKING_SYSTEM_HEADS, "TRACKING_NUM", "TRACKING_NUM");
+            //ViewBag.HEADER_TRACKING_NUM = new SelectList(db.TRACKING_SYSTEM_HEADS, "TRACKING_NUM", "TRACKING_TYPE");
             ViewBag.HEADER_TRACKING_NUM = TrackingHeaderNum;
             return View();
         }
@@ -75,7 +75,7 @@ namespace B2BTrackingSystem.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [宣告指派人員分類的SelectList物件]
-        public ActionResult Create([Bind(Include = "TRACKING_LINE_NUM,HEADER_TRACKING_NUM,PROCESSING_DATE,CUSTOMER_REPLY,ASSIGN_PEOPLE,ISDELETED")] TRACKING_SYSTEM_LINES tRACKING_SYSTEM_LINES)
+        public ActionResult Create([Bind(Include = "HEADER_TRACKING_NUM,PROCESSING_DATE,CUSTOMER_REPLY,ASSIGN_PEOPLE,TRACKING_LINE_NUM,ISDELETED")] TRACKING_SYSTEM_LINES tRACKING_SYSTEM_LINES)
         {
             if (ModelState.IsValid)
             {
@@ -109,9 +109,8 @@ namespace B2BTrackingSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.HEADER_TRACKING_NUM = new SelectList(db.TRACKING_SYSTEM_HEADS, "TRACKING_NUM", "TRACKING_NUM", tRACKING_SYSTEM_LINES.HEADER_TRACKING_NUM);
+            ViewBag.HEADER_TRACKING_NUM = new SelectList(db.TRACKING_SYSTEM_HEADS, "TRACKING_NUM", "TRACKING_TYPE", tRACKING_SYSTEM_LINES.HEADER_TRACKING_NUM);
             return View(tRACKING_SYSTEM_LINES);
-            //return RedirectToAction("Details", "TRACKING_SYSTEM_HEADS");
         }
 
         // POST: TRACKING_SYSTEM_LINES/Edit/5
@@ -156,8 +155,7 @@ namespace B2BTrackingSystem.Controllers
         public ActionResult DeleteConfirmed(decimal id)
         {
             TRACKING_SYSTEM_LINES tRACKING_SYSTEM_LINES = db.TRACKING_SYSTEM_LINES.Find(id);
-            //db.TRACKING_SYSTEM_LINES.Remove(tRACKING_SYSTEM_LINES);
-            tRACKING_SYSTEM_LINES.ISDELETED = 1;
+            db.TRACKING_SYSTEM_LINES.Remove(tRACKING_SYSTEM_LINES);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

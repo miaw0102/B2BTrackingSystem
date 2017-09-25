@@ -36,27 +36,44 @@
 
             <div class="row">
                 <div class="col-md-6 form-group">
+                    <label class="col-lg-3 control-label">需求單位:</label>
+                    <div class="col-lg-8">
+                        @Html.EditorFor(model => model.REQUESTER_DEPT, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.REQUESTER_DEPT, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
                     <label class="col-lg-3 control-label">需求者:</label>
                     <div class="col-lg-8">
                         @Html.EditorFor(model => model.REQUESTER, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.REQUESTER, "", new { @class = "text-danger" })
                     </div>
                 </div>
+            </div>
+
+            <div class="row">
                 <div class="col-md-6 form-group">
-                    <label class="col-lg-3 control-label">需求日期:</label>
+                    <label class="col-lg-3 control-label">客戶Ticket#:</label>
                     <div class="col-lg-8">
-                        @Html.EditorFor(model => model.REQUEST_DATE, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.REQUEST_DATE, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.CUSTICKETNO, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CUSTICKETNO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="col-lg-3 control-label">接單人員:</label>
+                    <div class="col-lg-8">
+                        @Html.EditorFor(model => model.ORDER_PEOPLE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ORDER_PEOPLE, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 form-group">
-                    <label class="col-lg-3 control-label">優先等級:</label>
+                    <label class="col-lg-3 control-label">需求日期:</label>
                     <div class="col-lg-8">
-                        @Html.EditorFor(model => model.PRIORITY_LEVEL, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.PRIORITY_LEVEL, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.REQUEST_DATE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.REQUEST_DATE, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-md-6 form-group">
@@ -70,12 +87,22 @@
 
             <div class="row">
                 <div class="col-md-6 form-group">
+                    <label class="col-lg-3 control-label">優先等級:</label>
+                    <div class="col-lg-8">
+                        @Html.EditorFor(model => model.PRIORITY_LEVEL, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PRIORITY_LEVEL, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
                     <label class="col-lg-3 control-label">指派人員:</label>
                     <div class="col-lg-8">
                         @Html.EditorFor(model => model.ASSIGN_PEOPLE, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.ASSIGN_PEOPLE, "", new { @class = "text-danger" })
                     </div>
                 </div>
+            </div>
+
+            <div class="row">             
                 <div class="col-md-6 form-group">
                     <label class="col-lg-3 control-label">案件狀態:</label>
                     <div class="col-lg-8">
@@ -83,9 +110,6 @@
                         @Html.ValidationMessageFor(model => model.CASE_STATE, "", new { @class = "text-danger" })
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
                 <div class="col-md-6 form-group">
                     <label class="col-lg-3 control-label">需求內容:</label>
                     <div class="col-lg-8">
@@ -93,6 +117,9 @@
                         @Html.ValidationMessageFor(model => model.TRACKING_CONTENT, "", new { @class = "text-danger" })
                     </div>
                 </div>
+            </div>
+
+            <div class="row">    
                 <div class="col-md-6 form-group">
                     <label class="col-lg-3 control-label">
                         @Html.LabelFor(model => model.CLOSING_DATE, "結案日期", htmlAttributes: new { @id = "CLOSING_DATE_Label", @style = "display: none" })
@@ -103,7 +130,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-md-offset-5">
                     <input type="submit" value="Create" class="btn btn-primary">

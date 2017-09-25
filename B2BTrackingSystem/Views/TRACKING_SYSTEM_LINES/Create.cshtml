@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 form-group">
-                    <label class="col-lg-3 control-label">客戶回覆:</label>
+                    <label class="col-lg-3 control-label">狀況說明:</label>
                     <div class="col-lg-8">
                         @Html.EditorFor(model => model.CUSTOMER_REPLY, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.CUSTOMER_REPLY, "", new { @class = "text-danger" })
@@ -69,13 +69,13 @@
             </div>*@
 
 
-       
+
     </div>
 }
 
 <div>
     @*@Html.ActionLink("Back to List", "Details", "TRACKING_SYSTEM_HEADS", new { id = ViewBag.HEADER_TRACKING_NUM }, null)*@
-    @Html.ActionLink("回追蹤問題列表", "Details", "TRACKING_SYSTEM_HEADS", new { id = ViewBag.HEADER_TRACKING_NUM}, null)
+    @Html.ActionLink("回追蹤問題列表", "Details", "TRACKING_SYSTEM_HEADS", new { id = ViewBag.HEADER_TRACKING_NUM }, null)
 </div>
 
 @section Scripts {

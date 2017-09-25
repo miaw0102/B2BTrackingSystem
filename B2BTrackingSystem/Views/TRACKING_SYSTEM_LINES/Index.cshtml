@@ -9,7 +9,7 @@
 
 <p>
     @*@Html.ActionLink("新增明細", "Create", new { TrackingHeaderNum = ViewBag.HEADER_TRACKING_NUM })*@
-    @Html.ActionLink("新增明細", "Create", new { TrackingHeaderNum = ViewBag.HEADER_TRACKING_NUM}, new { @class = "btn btn-primary" })
+    @Html.ActionLink("新增明細", "Create", new { TrackingHeaderNum = ViewBag.HEADER_TRACKING_NUM }, new { @class = "btn btn-primary" })
 </p>
 
 <table class="table">
@@ -20,11 +20,9 @@
             追蹤單號碼
             @*<a href="?sort=追蹤單號碼&desc=true">▼</a>*@
         </th>
-        <th>
-            @*<a href="?sort=追蹤單明細號碼">▲</a>*@
-            追蹤單明細號碼
-            @*<a href="?sort=追蹤單明細號碼&desc=true">▼</a>*@
-        </th>
+        @*<th>
+                追蹤單明細號碼
+            </th>*@
         <th>
             @*<a href="?sort=處理日期">▲</a>*@
             處理日期
@@ -37,7 +35,7 @@
         </th>
         <th>
             @*<a href="?sort=客戶回覆">▲</a>*@
-            @*客戶回覆*@
+            @*狀況說明*@
             @*<a href="?sort=客戶回覆&desc=true">▼</a>*@
         </th>
     </tr>
@@ -48,9 +46,9 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.TRACKING_LINE_NUM })
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TRACKING_SYSTEM_HEADS.TRACKING_NUM)
-            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.TRACKING_SYSTEM_HEADS.TRACKING_NUM)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.TRACKING_LINE_NUM)
             </td>
@@ -61,8 +59,8 @@
                 @Html.DisplayFor(modelItem => item.ASSIGN_PEOPLE)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.CUSTOMER_REPLY)
-            </td>*@
+                    @Html.DisplayFor(modelItem => item.CUSTOMER_REPLY)
+                </td>*@
         </tr>
     }
 

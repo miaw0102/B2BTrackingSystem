@@ -92,16 +92,17 @@
         </dd>
 
         @*<dt>
-            @Html.DisplayNameFor(model => model.ISDELETED)
-        </dt>
+                @Html.DisplayNameFor(model => model.ISDELETED)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ISDELETED)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.ISDELETED)
+            </dd>*@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

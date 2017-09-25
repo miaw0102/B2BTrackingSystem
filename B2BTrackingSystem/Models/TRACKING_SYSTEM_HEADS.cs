@@ -32,6 +32,9 @@ namespace B2BTrackingSystem.Models
         public string CASE_STATE { get; set; }
         public Nullable<System.DateTime> CLOSING_DATE { get; set; }
         public decimal ISDELETED { get; set; }
+        public string CUSTICKETNO { get; set; }
+        public string ORDER_PEOPLE { get; set; }
+        public string REQUESTER_DEPT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TRACKING_SYSTEM_LINES> TRACKING_SYSTEM_LINES { get; set; }

@@ -221,6 +221,7 @@
     <Compile Include="Controllers\優先等級分類的SelectList物件Attribute.cs" />
     <Compile Include="Controllers\宣告客戶分類的SelectList物件Attribute.cs" />
     <Compile Include="Controllers\宣告指派人員分類的SelectList物件Attribute.cs" />
+    <Compile Include="Controllers\宣告接單人員分類的SelectList物件Attribute.cs" />
     <Compile Include="Controllers\宣告案件狀態分類的SelectList物件Attribute.cs" />
     <Compile Include="Controllers\宣告追蹤單分類的SelectList物件Attribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -359,6 +360,7 @@
     <Content Include="Views\TRACKING_SYSTEM_HEADS\Details.cshtml" />
     <Content Include="Views\TRACKING_SYSTEM_HEADS\Edit.cshtml" />
     <Content Include="Views\TRACKING_SYSTEM_HEADS\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\接單人員分類.cshtml" />
     <Content Include="Views\TRACKING_SYSTEM_LINES\Create.cshtml" />
     <Content Include="Views\TRACKING_SYSTEM_LINES\Delete.cshtml" />
     <Content Include="Views\TRACKING_SYSTEM_LINES\Details.cshtml" />

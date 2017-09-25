@@ -18,17 +18,15 @@ namespace B2BTrackingSystem.Controllers
 
         private int pageSize = 5;
 
-
         // GET: TRACKING_SYSTEM_HEADS
         [宣告追蹤單分類的SelectList物件]
         [宣告客戶分類的SelectList物件]
         [優先等級分類的SelectList物件]
         [宣告案件狀態分類的SelectList物件]
         [宣告指派人員分類的SelectList物件]
-        //public ActionResult Index(int page = 1, string sort,bool? desc)
+        [宣告接單人員分類的SelectList物件]
         public ActionResult Index(int page = 1)
         {
-
             int currentPage = page < 1 ? 1 : page;
             var query = db.TRACKING_SYSTEM_HEADS.AsQueryable();
 
@@ -38,9 +36,9 @@ namespace B2BTrackingSystem.Controllers
 
             var model = new TrackingSystemHeadsListViewModel
             {
-                SearchParameter=new TrackingSystemHeadsSearchModel(),
-                PageIndex=currentPage,
-                TRACKING_SYSTEM_HEADS=data.ToPagedList(currentPage, pageSize)
+                SearchParameter = new TrackingSystemHeadsSearchModel(),
+                PageIndex = currentPage,
+                TRACKING_SYSTEM_HEADS = data.ToPagedList(currentPage, pageSize)
             };
 
             return View(model);
@@ -52,6 +50,7 @@ namespace B2BTrackingSystem.Controllers
         [優先等級分類的SelectList物件]
         [宣告案件狀態分類的SelectList物件]
         [宣告指派人員分類的SelectList物件]
+        [宣告接單人員分類的SelectList物件]
         public ActionResult Index(TrackingSystemHeadsListViewModel model, string btn = null)
         {
             if (model.SortField == null)
@@ -78,15 +77,20 @@ namespace B2BTrackingSystem.Controllers
             {
                 query = query.Where(p => p.PRIORITY_LEVEL.Contains(model.SearchParameter.PRIORITY_LEVEL));
             }
-            
+
             if (!String.IsNullOrEmpty(model.SearchParameter.CASE_STATE))
             {
                 query = query.Where(p => p.CASE_STATE.Contains(model.SearchParameter.CASE_STATE));
             }
-            
+
             if (!String.IsNullOrEmpty(model.SearchParameter.ASSIGN_PEOPLE))
             {
                 query = query.Where(p => p.ASSIGN_PEOPLE.Contains(model.SearchParameter.ASSIGN_PEOPLE));
+            }
+
+            if (!String.IsNullOrEmpty(model.SearchParameter.CUSTICKETNO))
+            {
+                query = query.Where(p => p.CUSTICKETNO.Contains(model.SearchParameter.CUSTICKETNO));
             }
             #endregion
 
@@ -202,7 +206,7 @@ namespace B2BTrackingSystem.Controllers
                     break;
             }
             #endregion
-           
+
 
             int currentPage = model.PageIndex < 1 ? 1 : model.PageIndex;
 
@@ -216,10 +220,8 @@ namespace B2BTrackingSystem.Controllers
             return View(result);
 
         }
-        
-      
 
-            // GET: TRACKING_SYSTEM_HEADS/Details/5
+        // GET: TRACKING_SYSTEM_HEADS/Details/5
         public ActionResult Details(decimal id)
         {
             if (id == null)
@@ -240,6 +242,7 @@ namespace B2BTrackingSystem.Controllers
         [優先等級分類的SelectList物件]
         [宣告案件狀態分類的SelectList物件]
         [宣告指派人員分類的SelectList物件]
+        [宣告接單人員分類的SelectList物件]
         public ActionResult Create()
         {
             return View();
@@ -255,7 +258,8 @@ namespace B2BTrackingSystem.Controllers
         [優先等級分類的SelectList物件]
         [宣告案件狀態分類的SelectList物件]
         [宣告指派人員分類的SelectList物件]
-        public ActionResult Create([Bind(Include = "TRACKING_NUM,TRACKING_TYPE,CUSTOMER_TYPE,REQUESTER,REQUEST_DATE,PRIORITY_LEVEL,DEADLINE,TRACKING_CONTENT,ASSIGN_PEOPLE,CASE_STATE,CLOSING_DATE,ISDELETED")] TRACKING_SYSTEM_HEADS tRACKING_SYSTEM_HEADS)
+        [宣告接單人員分類的SelectList物件]
+        public ActionResult Create([Bind(Include = "TRACKING_NUM,TRACKING_TYPE,CUSTOMER_TYPE,REQUESTER,REQUEST_DATE,PRIORITY_LEVEL,DEADLINE,TRACKING_CONTENT,ASSIGN_PEOPLE,CASE_STATE,CLOSING_DATE,ISDELETED,CUSTICKETNO,ORDER_PEOPLE,REQUESTER_DEPT")] TRACKING_SYSTEM_HEADS tRACKING_SYSTEM_HEADS)
         {
             if (tRACKING_SYSTEM_HEADS.CASE_STATE == "Close" && tRACKING_SYSTEM_HEADS.CLOSING_DATE == null)
             {
@@ -273,7 +277,7 @@ namespace B2BTrackingSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
+
             return View(tRACKING_SYSTEM_HEADS);
         }
 
@@ -283,6 +287,7 @@ namespace B2BTrackingSystem.Controllers
         [優先等級分類的SelectList物件]
         [宣告案件狀態分類的SelectList物件]
         [宣告指派人員分類的SelectList物件]
+        [宣告接單人員分類的SelectList物件]
         public ActionResult Edit(decimal id)
         {
             if (id == null)
@@ -307,7 +312,8 @@ namespace B2BTrackingSystem.Controllers
         [優先等級分類的SelectList物件]
         [宣告案件狀態分類的SelectList物件]
         [宣告指派人員分類的SelectList物件]
-        public ActionResult Edit([Bind(Include = "TRACKING_NUM,TRACKING_TYPE,CUSTOMER_TYPE,REQUESTER,REQUEST_DATE,PRIORITY_LEVEL,DEADLINE,TRACKING_CONTENT,ASSIGN_PEOPLE,CASE_STATE,CLOSING_DATE,ISDELETED")] TRACKING_SYSTEM_HEADS tRACKING_SYSTEM_HEADS)
+        [宣告接單人員分類的SelectList物件]
+        public ActionResult Edit([Bind(Include = "TRACKING_NUM,TRACKING_TYPE,CUSTOMER_TYPE,REQUESTER,REQUEST_DATE,PRIORITY_LEVEL,DEADLINE,TRACKING_CONTENT,ASSIGN_PEOPLE,CASE_STATE,CLOSING_DATE,ISDELETED,CUSTICKETNO,ORDER_PEOPLE,REQUESTER_DEPT")] TRACKING_SYSTEM_HEADS tRACKING_SYSTEM_HEADS)
         {
             if (tRACKING_SYSTEM_HEADS.CASE_STATE == "Close" && tRACKING_SYSTEM_HEADS.CLOSING_DATE == null)
             {
@@ -344,8 +350,7 @@ namespace B2BTrackingSystem.Controllers
         public ActionResult DeleteConfirmed(decimal id)
         {
             TRACKING_SYSTEM_HEADS tRACKING_SYSTEM_HEADS = db.TRACKING_SYSTEM_HEADS.Find(id);
-            //db.TRACKING_SYSTEM_HEADS.Remove(tRACKING_SYSTEM_HEADS);
-            tRACKING_SYSTEM_HEADS.ISDELETED = 1;
+            db.TRACKING_SYSTEM_HEADS.Remove(tRACKING_SYSTEM_HEADS);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
