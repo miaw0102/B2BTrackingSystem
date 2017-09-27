@@ -11,7 +11,9 @@ namespace B2BTrackingSystem.Controllers
             var items = new List<SelectListItem>();
             items.Add(new SelectListItem() { Text = "Infra", Value = "Infra" });
             items.Add(new SelectListItem() { Text = "Operation", Value = "Operation" });
+            items.Add(new SelectListItem() { Text = "Other", Value = "Other" });
             items.Add(new SelectListItem() { Text = "Program", Value = "Program" });
+            items.Add(new SelectListItem() { Text = "Project", Value = "Project" });
 
             filterContext.Controller.ViewBag.追蹤單分類 
                 = new SelectList(items, "Value", "Text");
