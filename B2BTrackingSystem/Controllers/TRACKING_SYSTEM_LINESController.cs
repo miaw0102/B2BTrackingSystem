@@ -33,8 +33,10 @@ namespace B2BTrackingSystem.Controllers
 
             var data = all
                 .Where(d => d.ISDELETED == 0)
-                .OrderBy(d => d.HEADER_TRACKING_NUM)
-                .ThenBy(d => d.TRACKING_LINE_NUM);
+                //.OrderBy(d => d.TRACKING_LINE_NUM)
+                .OrderBy(d => d.PROCESSING_DATE)
+                .ThenBy(d => d.ASSIGN_PEOPLE);
+                
 
             return View(data);
 
