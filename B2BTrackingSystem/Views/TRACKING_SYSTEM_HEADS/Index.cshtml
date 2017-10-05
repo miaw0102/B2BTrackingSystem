@@ -30,6 +30,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-6 form-group">
                 <label class="col-lg-3 control-label">優先等級:</label>
@@ -45,22 +46,29 @@
                     @Html.EditorFor(x => x.SearchParameter.ASSIGN_PEOPLE, new { htmlAttributes = new { @class = "form-control", @id = "ASSIGN_PEOPLE_ID" } })
                 </div>
             </div>
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">案件狀態:</label>
-                <div class="col-lg-8">
-                    @*@Html.DropDownList("案件狀態分類", null, "", new { @class = "form-control",@id = "CASE_STATE_ID" })*@
-                    @Html.EditorFor(x => x.SearchParameter.CASE_STATE, new { htmlAttributes = new { @class = "form-control", @id = "CASE_STATE_ID" } })
-                </div>
-            </div>
-            <div class="col-md-6 form-group">
-                <label class="col-lg-3 control-label">客戶Ticket#:</label>
-                <div class="col-lg-8">
-                    @*@Html.DropDownList("案件狀態分類", null, "", new { @class = "form-control",@id = "CASE_STATE_ID" })*@
-                    @Html.EditorFor(x => x.SearchParameter.CUSTICKETNO, new { htmlAttributes = new { @class = "form-control", @id = "CUSTICKETNO" } })
-                </div>
-            </div>
         </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label class="col-lg-3 control-label">案件狀態:</label>
+                    <div class="col-lg-8">
+                        @*@Html.DropDownList("案件狀態分類", null, "", new { @class = "form-control",@id = "CASE_STATE_ID" })*@
+                        @Html.EditorFor(x => x.SearchParameter.CASE_STATE, new { htmlAttributes = new { @class = "form-control", @id = "CASE_STATE_ID" } })
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="col-lg-3 control-label">客戶Ticket#:</label>
+                    <div class="col-lg-8">
+                        @*@Html.DropDownList("案件狀態分類", null, "", new { @class = "form-control",@id = "CASE_STATE_ID" })*@
+                        @Html.EditorFor(x => x.SearchParameter.CUSTICKETNO, new { htmlAttributes = new { @class = "form-control", @id = "CUSTICKETNO" } })
+                    </div>
+                </div>
+            </div>
+
+
+
         <span class="clearfix"></span>
+
         <div class="row">
             <div class="col-md-offset-5">
                 <input type="submit" class="btn btn-primary" value="Search">
