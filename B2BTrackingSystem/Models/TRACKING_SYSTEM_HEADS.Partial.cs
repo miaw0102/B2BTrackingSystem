@@ -67,7 +67,7 @@ namespace B2BTrackingSystem.Models
         [Required(ErrorMessage = "必填")]
         public decimal ISDELETED { get; set; }
 
-        [Required(ErrorMessage = "必填")]
+        
         public decimal CUSTICKETNO { get; set; }
 
         [Required(ErrorMessage = "必填")]

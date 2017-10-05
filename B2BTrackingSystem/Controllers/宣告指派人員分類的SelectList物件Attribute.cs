@@ -9,6 +9,7 @@ namespace B2BTrackingSystem.Controllers
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var items = new List<SelectListItem>();
+            items.Add(new SelectListItem() { Text = "All", Value = "All" });
             items.Add(new SelectListItem() { Text = "Alice", Value = "Alice" });
             items.Add(new SelectListItem() { Text = "Diana", Value = "Diana" });
             items.Add(new SelectListItem() { Text = "Duke", Value = "Duke" });
