@@ -214,7 +214,8 @@
 
                     $(function () {
                         $('.pagination>li>a[href]').each(function (i, item) {
-                            var page = $(item).attr('href').replace('/TRACKING_SYSTEM_HEADS?page=', '');
+                            //var page = $(item).attr('href').replace('/TRACKING_SYSTEM_HEADS?page=', '');
+                            var page = $(item).attr('href').replace('/TRACKING_SYSTEM_HEADS?page=', '').replace('/?page=', '');
                             $(item).attr('href', '#').click(function () { postPage(page); });
 
                         });

@@ -51,7 +51,7 @@ namespace B2BTrackingSystem.Controllers
         [宣告案件狀態分類的SelectList物件]
         [宣告指派人員分類的SelectList物件]
         [宣告接單人員分類的SelectList物件]
-        public ActionResult Index(TrackingSystemHeadsListViewModel model, string btn = null)
+        public ActionResult Index(TrackingSystemHeadsListViewModel model)
         {
             if (model.SortField == null)
             {
@@ -104,11 +104,11 @@ namespace B2BTrackingSystem.Controllers
                 case "TRACKING_NUM":
                     if (model.SortDirection == "ascending")
                     {
-                        data = data.OrderByDescending(m => m.TRACKING_NUM);
+                        data = data.OrderBy(m => m.TRACKING_NUM);
                     }
                     else
                     {
-                        data = data.OrderBy(m => m.TRACKING_NUM);
+                        data = data.OrderByDescending(m => m.TRACKING_NUM);
                     }
                     break;
                 case "TRACKING_TYPE":
