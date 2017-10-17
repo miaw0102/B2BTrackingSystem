@@ -16,7 +16,7 @@ namespace B2BTrackingSystem.Controllers
     {
         private B2BTrackingSystemEntities db = new B2BTrackingSystemEntities();
 
-        private int pageSize = 5;
+        private int pageSize = 10;
 
         // GET: TRACKING_SYSTEM_HEADS
         [宣告追蹤單分類的SelectList物件]
