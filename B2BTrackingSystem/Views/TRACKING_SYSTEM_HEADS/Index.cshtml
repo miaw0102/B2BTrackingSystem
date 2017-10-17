@@ -5,7 +5,6 @@
     ViewBag.Title = "Index";
 }
 
-
 <h2>追蹤項目列表</h2>
 
 
@@ -48,22 +47,22 @@
             </div>
         </div>
 
-            <div class="row">
-                <div class="col-md-6 form-group">
-                    <label class="col-lg-3 control-label">案件狀態:</label>
-                    <div class="col-lg-8">
-                        @*@Html.DropDownList("案件狀態分類", null, "", new { @class = "form-control",@id = "CASE_STATE_ID" })*@
-                        @Html.EditorFor(x => x.SearchParameter.CASE_STATE, new { htmlAttributes = new { @class = "form-control", @id = "CASE_STATE_ID" } })
-                    </div>
-                </div>
-                <div class="col-md-6 form-group">
-                    <label class="col-lg-3 control-label">客戶Ticket#:</label>
-                    <div class="col-lg-8">
-                        @*@Html.DropDownList("案件狀態分類", null, "", new { @class = "form-control",@id = "CASE_STATE_ID" })*@
-                        @Html.EditorFor(x => x.SearchParameter.CUSTICKETNO, new { htmlAttributes = new { @class = "form-control", @id = "CUSTICKETNO" } })
-                    </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="col-lg-3 control-label">案件狀態:</label>
+                <div class="col-lg-8">
+                    @*@Html.DropDownList("案件狀態分類", null, "", new { @class = "form-control",@id = "CASE_STATE_ID" })*@
+                    @Html.EditorFor(x => x.SearchParameter.CASE_STATE, new { htmlAttributes = new { @class = "form-control", @id = "CASE_STATE_ID" } })
                 </div>
             </div>
+            <div class="col-md-6 form-group">
+                <label class="col-lg-3 control-label">客戶Ticket#:</label>
+                <div class="col-lg-8">
+                    @*@Html.DropDownList("案件狀態分類", null, "", new { @class = "form-control",@id = "CASE_STATE_ID" })*@
+                    @Html.EditorFor(x => x.SearchParameter.CUSTICKETNO, new { htmlAttributes = new { @class = "form-control", @id = "CUSTICKETNO" } })
+                </div>
+            </div>
+        </div>
 
 
 
@@ -73,8 +72,10 @@
             <div class="col-md-offset-5">
                 <input type="submit" class="btn btn-primary" value="Search">
                 <span></span>
-                @*<input type="reset" class="btn btn-default" value="Cancel">*@
-                @*<input type="button" class="btn btn-default" value="Cancel" id="Cancel" >*@
+                @*
+                    <input type="reset" class="btn btn-default" value="Cancel">*@
+                @*
+                    <input type="button" class="btn btn-default" value="Cancel" id="Cancel">*@
             </div>
         </div>
 
@@ -83,13 +84,56 @@
     <div class="pagination" style="display:inline-block; vertical-align:middle;">
         @Html.ActionLink("新增項目", "Create", null, new { @class = "btn btn-primary" })
         @*@Html.ActionLink("新增項目", "Create")*@
-        @*<button onclick="location.href='@Url.Action("Create", "TRACKING_SYSTEM_HEADS")';return false;">新增項目</button>*@
+        @*
+            <button onclick="location.href='@Url.Action(" Create", "TRACKING_SYSTEM_HEADS" )';return false;">新增項目</button>*@
     </div>
 
-        <div style="display:inline-block;vertical-align:middle;float:right; " class="page-count">
-            @Html.PagedListPager(Model.TRACKING_SYSTEM_HEADS, page => Url.Action("Index", new { page }))
-        </div>
+    <div style="display:inline-block;vertical-align:middle;float:right; " class="page-count">
+        @Html.PagedListPager(Model.TRACKING_SYSTEM_HEADS, page => Url.Action("Index", new { page }),
+        new PagedListRenderOptions
+        {
+            DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+            DisplayLinkToLastPage = PagedListDisplayMode.Never,
+            DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
+            DisplayLinkToNextPage = PagedListDisplayMode.Never,
+            DisplayLinkToIndividualPages = false,
+            //LinkToFirstPageFormat="<<第一頁",
+            //LinkToPreviousPageFormat="<<前一頁",
+            //LinkToNextPageFormat= "後一頁>>",
+            //LinkToLastPageFormat = "最末頁>>",
+            //DisplayPageCountAndCurrentLocation = true,
+            //PageCountAndCurrentLocationFormat = "第{0}頁/共{1}頁",
+            DisplayItemSliceAndTotal = true,
+            //ItemSliceAndTotalFormat = "顯示項目:{0}~{1}項,共{2}項"
+            ItemSliceAndTotalFormat = "共{2}項"
 
+        })
+    </div>
+    <div style="display:inline-block;vertical-align:middle;float:right; " class="page-count">
+        @*@Html.PagedListPager(Model.TRACKING_SYSTEM_HEADS, page => Url.Action("Index", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)*@
+        @Html.PagedListPager(Model.TRACKING_SYSTEM_HEADS, page => Url.Action("Index", new { page }))
+    </div>
+    <div style="display:inline-block;vertical-align:middle;float:right; " class="page-count">
+        @Html.PagedListPager(Model.TRACKING_SYSTEM_HEADS, page => Url.Action("Index", new { page }),
+        new PagedListRenderOptions
+        {
+            DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+            DisplayLinkToLastPage = PagedListDisplayMode.Never,
+            DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
+            DisplayLinkToNextPage = PagedListDisplayMode.Never,
+            DisplayLinkToIndividualPages = false,
+            //LinkToFirstPageFormat="<<第一頁",
+            //LinkToPreviousPageFormat="<<前一頁",
+            //LinkToNextPageFormat= "後一頁>>",
+            //LinkToLastPageFormat = "最末頁>>",
+            DisplayPageCountAndCurrentLocation = true,
+            PageCountAndCurrentLocationFormat = "第{0}頁/共{1}頁",
+            //DisplayItemSliceAndTotal = true,
+            //ItemSliceAndTotalFormat = "顯示項目:{0}~{1}項,共{2}項"
+            //ItemSliceAndTotalFormat = "共{2}項"
+
+        })
+    </div>
 
 
         @Html.AntiForgeryToken()
@@ -110,7 +154,8 @@
                     <a href="#" data-sortfield="CUSTOMER_TYPE" class="header">客戶別</a>
                 </th>
                 <th>
-                    @*<a href="#" data-sortfield="REQUEST_DATE" class="header">需求日期</a>*@
+                    @*
+                        <a href="#" data-sortfield="REQUEST_DATE" class="header">需求日期</a>*@
                     需求日期
                 </th>
                 <th>
@@ -126,11 +171,13 @@
                     <a href="#" data-sortfield="CASE_STATE" class="header">案件狀態</a>
                 </th>
                 <th>
-                    @*<a href="#" data-sortfield="CLOSING_DATE" class="header">結案日期</a>*@
+                    @*
+                        <a href="#" data-sortfield="CLOSING_DATE" class="header">結案日期</a>*@
                     結案日期
                 </th>
                 <th>
-                    @*<a href="#" data-sortfield="REQUESTER" class="header">需求者</a>*@
+                    @*
+                        <a href="#" data-sortfield="REQUESTER" class="header">需求者</a>*@
                     需求者
                 </th>
                 <th></th>
@@ -157,7 +204,8 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.DEADLINE)
                     </td>
-                    @*<td>
+                    @*
+                        <td>
                             @Html.DisplayFor(modelItem => item.TRACKING_CONTENT)
                         </td>*@
                     <td>
@@ -172,7 +220,8 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.REQUESTER)
                     </td>
-                    @*<td>
+                    @*
+                        <td>
                             @Html.DisplayFor(modelItem => item.ISDELETED)
                         </td>*@
                     <td>
@@ -190,46 +239,46 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
 
-                    $(document).ready(function () {
-                        $(".header").click(function (evt) {
-                            var targetFormId = '#TRACKING_SYSTEM_HEADS_ID';
-                            var sortfield = $(evt.target).data('sortfield');
-                            if ($('#SortField').val() == sortfield) {
-                                if ($('#SortDirection').val() == 'ascending') {
-                                    $('#SortDirection').val('descending');
-                                } else {
-                                    $('#SortDirection').val('ascending');
-                                }
-                            } else {
-                                $("#SortField").val(sortfield);
-                                $('#SortDirection').val('ascending');
-                            }
-                            evt.preventDefault();
-                            $(targetFormId).submit();
-                        });
-                    });
+        $(document).ready(function () {
+            $(".header").click(function (evt) {
+                var targetFormId = '#TRACKING_SYSTEM_HEADS_ID';
+                var sortfield = $(evt.target).data('sortfield');
+                if ($('#SortField').val() == sortfield) {
+                    if ($('#SortDirection').val() == 'ascending') {
+                        $('#SortDirection').val('descending');
+                    } else {
+                        $('#SortDirection').val('ascending');
+                    }
+                } else {
+                    $("#SortField").val(sortfield);
+                    $('#SortDirection').val('ascending');
+                }
+                evt.preventDefault();
+                $(targetFormId).submit();
+            });
+        });
 
 
 
 
-                    $(function () {
-                        $('.pagination>li>a[href]').each(function (i, item) {
-                            //var page = $(item).attr('href').replace('/TRACKING_SYSTEM_HEADS?page=', '');
-                            var page = $(item).attr('href').replace('/TRACKING_SYSTEM_HEADS?page=', '').replace('/?page=', '');
-                            $(item).attr('href', '#').click(function () { postPage(page); });
+        $(function () {
+            $('.pagination>li>a[href]').each(function (i, item) {
+                //var page = $(item).attr('href').replace('/TRACKING_SYSTEM_HEADS?page=', '');
+                var page = $(item).attr('href').replace('/TRACKING_SYSTEM_HEADS?page=', '').replace('/?page=', '');
+                $(item).attr('href', '#').click(function () { postPage(page); });
 
-                        });
-                    });
+            });
+        });
 
-                    function postPage(page) {
-                        var targetFormId = '#TRACKING_SYSTEM_HEADS_ID';
-                        if ($(targetFormId).size() > 0) {
-                            $('<input>')
-                                .attr({ type: 'hidden', id: 'PageIndex', name: 'PageIndex', value: page })
-                                .appendTo($(targetFormId));
-                            $(targetFormId).submit();
-                        }
-                    };
+        function postPage(page) {
+            var targetFormId = '#TRACKING_SYSTEM_HEADS_ID';
+            if ($(targetFormId).size() > 0) {
+                $('<input>')
+                    .attr({ type: 'hidden', id: 'PageIndex', name: 'PageIndex', value: page })
+                    .appendTo($(targetFormId));
+                $(targetFormId).submit();
+            }
+        };
     </script>
 }
 
