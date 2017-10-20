@@ -14,6 +14,7 @@ namespace B2BTrackingSystem.Controllers
             items.Add(new SelectListItem() { Text = "Diana", Value = "Diana" });
             items.Add(new SelectListItem() { Text = "Duke", Value = "Duke" });
             items.Add(new SelectListItem() { Text = "Edward", Value = "Edward" });
+            items.Add(new SelectListItem() { Text = "Ewing", Value = "Ewing" });
 
             filterContext.Controller.ViewBag.指派人員分類
                 = new SelectList(items, "Value", "Text");
