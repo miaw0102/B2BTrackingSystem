@@ -35,7 +35,7 @@ namespace B2BTrackingSystem.Controllers
                 .Where(d => d.ISDELETED == 0)
                 //.OrderBy(d => d.TRACKING_LINE_NUM)
                 .OrderBy(d => d.PROCESSING_DATE)
-                .ThenBy(d => d.ASSIGN_PEOPLE)
+                //.ThenBy(d => d.ASSIGN_PEOPLE)
                 .ThenBy(d => d.TRACKING_LINE_NUM);
                 
 
