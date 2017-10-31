@@ -17,6 +17,7 @@ namespace B2BTrackingSystem.Controllers
             items.Add(new SelectListItem() { Text = "M1", Value = "M1" });
             items.Add(new SelectListItem() { Text = "M1(B2B)", Value = "M1(B2B)" });
             items.Add(new SelectListItem() { Text = "M1(B2C)", Value = "M1(B2C)" });
+            items.Add(new SelectListItem() { Text = "S4", Value = "S4" });
             items.Add(new SelectListItem() { Text = "YB6", Value = "YB6" });
            
 
